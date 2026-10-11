@@ -1,0 +1,1496 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Mari Kawan Creative | Websites for brands and institutions</title>
+    <meta
+      name="description"
+      content="Mari Kawan Creative builds company profile, catalog, news and landing page websites, starting from $100."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      document.documentElement.classList.add("js");
+      (function () {
+        try {
+          var t = localStorage.getItem("mkc-theme");
+          if (!t) t = "light";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: "#1684AD",
+              darkBlue: "#0f6182",
+              lightBlue: "#e0f2fe",
+              light: "#f8fafc",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                '"Segoe UI"',
+                "Roboto",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Site header -->
+    <header class="site-header">
+      <div class="container site-header__bar">
+        <a
+          href="index.html"
+          class="brand"
+          aria-label="Mari Kawan Creative, home"
+        >
+          <!-- LOGO: replace the .brand__mark span with <img src="assets/logo.svg" alt="" class="brand__logo"> -->
+          <span class="brand__mark">MKC</span>
+          <span class="brand__name">Mari Kawan Creative</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="index.html" aria-current="page">Home</a
+          ><a href="about.html">About</a><a href="services.html">Services</a
+          ><a href="case-studies.html">Case Studies</a
+          ><a href="contact.html">Contact</a>
+        </nav>
+        <div class="site-header__actions">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="id" aria-pressed="false">
+              ID
+            </button>
+            <button type="button" data-lang="es" aria-pressed="false">
+              ES
+            </button>
+          </div>
+          <button
+            type="button"
+            class="theme-btn"
+            data-theme-toggle
+            aria-label="Toggle dark mode"
+          >
+            <span class="i-moon"
+              ><svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"
+                /></svg></span
+            ><span class="i-sun"
+              ><svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                /></svg
+            ></span>
+          </button>
+          <a class="btn btn-primary btn-sm site-header__cta" href="contact.html"
+            >Get a Quote</a
+          >
+          <button
+            id="menu-btn"
+            class="menu-btn"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            >
+              <path d="M3 7h14M3 13h14" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <a href="index.html">Home</a><a href="about.html">About</a
+        ><a href="services.html">Services</a
+        ><a href="case-studies.html">Case Studies</a
+        ><a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary mobile-menu__cta"
+          >Get a Quote</a
+        >
+      </div>
+    </header>
+    <main>
+      <!-- Hero slider: edit, add or remove <article class="slide"> blocks. Dots are generated by main.js. -->
+      <section
+        class="slider"
+        data-slider
+        aria-roledescription="carousel"
+        aria-label="Featured"
+      >
+        <div class="slider-track">
+          <!-- Slide 1: Brand promise -->
+          <article
+            class="slide slide-light is-active"
+            aria-roledescription="slide"
+            aria-label="1 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Websites for brands and institutions</p>
+                <h1 class="t-display">Your brand,<br />online and ready.</h1>
+                <p class="t-lead">
+                  Company profiles, catalogs, news sites and landing pages,
+                  designed to look sharp and load fast on every screen.
+                </p>
+                <ul class="slide-points">
+                  <li>Starting from $100</li>
+                  <li>Mobile first</li>
+                  <li>Custom work welcome</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="contact.html">Get a Quote</a
+                  ><a class="link" href="case-studies.html"
+                    >See our work &rsaquo;</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="hero-mock">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="float-phone">
+                    <div class="phn mkx" style="--a: #0f6182">
+                      <div class="mk-body">
+                        <div class="ac" style="flex: 1"></div>
+                        <span class="l" style="width: 80%"></span
+                        ><span class="l" style="width: 60%"></span>
+                        <div class="bx" style="flex: 1"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="float-chip float-chip--a">Fast loading</span
+                  ><span class="float-chip float-chip--b">Mobile first</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <!-- Slide 2: Services -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="2 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">What we build</p>
+                <h2 class="t-display">
+                  Four website types.<br />One clear standard.
+                </h2>
+                <p class="t-lead">
+                  Company profile, catalog, news and landing page, plus custom
+                  work shaped around your needs.
+                </p>
+                <ul class="slide-points">
+                  <li>Company profile and catalog</li>
+                  <li>News and landing pages</li>
+                  <li>Custom work on request</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="services.html"
+                    >Explore services</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="tile-grid">
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="row" style="flex: 1.3">
+                          <div style="flex: 1.1">
+                            <span class="l h" style="width: 80%"></span
+                            ><span class="l h" style="width: 55%"></span
+                            ><span class="l" style="width: 70%"></span
+                            ><span class="l" style="width: 60%"></span>
+                            <div class="bt" style="margin-top: 10px"></div>
+                          </div>
+                          <div class="ac"></div>
+                        </div>
+                        <div class="grid3">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Company Profile</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="grid3" style="grid-template-rows: 1fr 1fr">
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Catalog Website</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="ac" style="flex: 1.2"></div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">News and Blog</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div
+                          style="
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex: 1;
+                            justify-content: center;
+                          "
+                        >
+                          <span class="l h" style="width: 60%"></span
+                          ><span class="l h" style="width: 40%"></span
+                          ><span class="l" style="width: 50%"></span>
+                          <div
+                            class="bt"
+                            style="width: 26%; margin: 8px 0"
+                          ></div>
+                        </div>
+                        <div class="row" style="flex: 0.6">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Landing Page</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+          <!-- Slide 3: Selected work -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="3 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Selected work</p>
+                <h2 class="t-display">Built for<br />real clients.</h2>
+                <p class="t-lead">
+                  From a research center to a village profile, see how we turn
+                  content into clear, credible websites.
+                </p>
+                <ul class="slide-points">
+                  <li>Research center profile</li>
+                  <li>Village profile</li>
+                  <li>Catalog and landing pages</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="case-studies.html"
+                    >View case studies</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="stack">
+                  <div class="mk mkx" style="--a: #0f766e">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mk mkx" style="--a: #15803d">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <!-- Slide 4: Call to action -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="4 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Let's work together</p>
+                <h2 class="t-display">Have a project<br />in mind?</h2>
+                <p class="t-lead">
+                  Share your goals and get a clear plan and quote within one
+                  business day.
+                </p>
+                <ul class="slide-points">
+                  <li>Free conversation</li>
+                  <li>Clear estimate</li>
+                  <li>Support that fits your needs</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="contact.html">Get a Quote</a>
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="phone-row">
+                  <div class="phn mkx" style="--a: #a16207">
+                    <div class="mk-body">
+                      <div class="ac" style="flex: 1"></div>
+                      <span class="l" style="width: 80%"></span
+                      ><span class="l" style="width: 60%"></span>
+                      <div class="bx" style="flex: 1"></div>
+                    </div>
+                  </div>
+                  <div class="phn mkx" style="--a: #1684ad">
+                    <div class="mk-body">
+                      <div class="ac" style="flex: 1"></div>
+                      <span class="l" style="width: 80%"></span
+                      ><span class="l" style="width: 60%"></span>
+                      <div class="bx" style="flex: 1"></div>
+                    </div>
+                  </div>
+                  <div class="phn mkx" style="--a: #7c3aed">
+                    <div class="mk-body">
+                      <div class="ac" style="flex: 1"></div>
+                      <span class="l" style="width: 80%"></span
+                      ><span class="l" style="width: 60%"></span>
+                      <div class="bx" style="flex: 1"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="slider-ui" role="group" aria-label="Slider controls">
+          <button
+            class="slider-btn"
+            data-slider-prev
+            aria-label="Previous slide"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 4l-6 6 6 6" />
+            </svg>
+          </button>
+          <div class="slider-dots">
+            <button
+              class="dot-btn is-active"
+              data-slider-dot
+              aria-label="Go to slide 1: Brand promise"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 2: Services"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 3: Selected work"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 4: Call to action"
+            >
+              <span class="dot"></span>
+            </button>
+          </div>
+          <button class="slider-btn" data-slider-next aria-label="Next slide">
+            <svg
+              viewBox="0 0 20 20"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 4l6 6-6 6" />
+            </svg>
+          </button>
+          <button
+            class="slider-btn"
+            data-slider-toggle
+            aria-label="Pause slideshow"
+          >
+            <svg
+              class="i-pause"
+              viewBox="0 0 20 20"
+              width="14"
+              height="14"
+              fill="currentColor"
+            >
+              <rect x="5" y="4" width="3.5" height="12" rx="1" />
+              <rect x="11.5" y="4" width="3.5" height="12" rx="1" /></svg
+            ><svg
+              class="i-play"
+              viewBox="0 0 20 20"
+              width="14"
+              height="14"
+              fill="currentColor"
+            >
+              <path d="M6 4l10 6-10 6z" />
+            </svg>
+          </button>
+        </div>
+      </section>
+      <!-- Services -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head rv">
+            <h2 class="t-h2">What we build.</h2>
+            <p class="t-lead">
+              Four website types, plus custom work shaped around your needs.
+            </p>
+          </div>
+          <div class="grid-5 mt-12">
+            <div class="rv">
+              <a href="services.html" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Service</p>
+                <h3 class="t-h3">Company Profile</h3>
+                <p class="t-body">
+                  Tell your brand story with a clear, credible presence that
+                  earns trust on the first visit.
+                </p>
+                <span class="link">Learn more &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="services.html" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="grid3" style="grid-template-rows: 1fr 1fr">
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Service</p>
+                <h3 class="t-h3">Catalog Website</h3>
+                <p class="t-body">
+                  Show your products in a clean, organized catalog that is easy
+                  to browse on any screen.
+                </p>
+                <span class="link">Learn more &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="services.html" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="ac" style="flex: 1.2"></div>
+                      <div class="row" style="flex: 0.5; align-items: center">
+                        <div
+                          class="bx"
+                          style="flex: 0 0 18%; height: 100%"
+                        ></div>
+                        <div>
+                          <span class="l" style="width: 85%"></span
+                          ><span class="l" style="width: 55%"></span>
+                        </div>
+                      </div>
+                      <div class="row" style="flex: 0.5; align-items: center">
+                        <div
+                          class="bx"
+                          style="flex: 0 0 18%; height: 100%"
+                        ></div>
+                        <div>
+                          <span class="l" style="width: 85%"></span
+                          ><span class="l" style="width: 55%"></span>
+                        </div>
+                      </div>
+                      <div class="row" style="flex: 0.5; align-items: center">
+                        <div
+                          class="bx"
+                          style="flex: 0 0 18%; height: 100%"
+                        ></div>
+                        <div>
+                          <span class="l" style="width: 85%"></span
+                          ><span class="l" style="width: 55%"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Service</p>
+                <h3 class="t-h3">News and Blog</h3>
+                <p class="t-body">
+                  Publish articles and updates in a calm, readable layout that
+                  is simple to keep fresh.
+                </p>
+                <span class="link">Learn more &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="services.html" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div
+                        style="
+                          text-align: center;
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          flex: 1;
+                          justify-content: center;
+                        "
+                      >
+                        <span class="l h" style="width: 60%"></span
+                        ><span class="l h" style="width: 40%"></span
+                        ><span class="l" style="width: 50%"></span>
+                        <div class="bt" style="width: 26%; margin: 8px 0"></div>
+                      </div>
+                      <div class="row" style="flex: 0.6">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Service</p>
+                <h3 class="t-h3">Landing Page</h3>
+                <p class="t-body">
+                  One focused page with one clear message, built to turn
+                  visitors into sign-ups and inquiries.
+                </p>
+                <span class="link">Learn more &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="contact.html" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div
+                        style="
+                          display: grid;
+                          place-items: center;
+                          flex: 1;
+                          border: 2px dashed var(--a);
+                          border-radius: 10px;
+                          color: var(--a);
+                          font-size: 2.25rem;
+                          font-weight: 300;
+                        "
+                      >
+                        +
+                      </div>
+                      <span class="l" style="width: 60%"></span
+                      ><span class="l" style="width: 40%"></span>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Your idea</p>
+                <h3 class="t-h3">Custom & More</h3>
+                <p class="t-body">
+                  Something different? We listen first, then design and build
+                  what fits your needs.
+                </p>
+                <span class="link">Tell us your needs &rsaquo;</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pricing -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="price-box rv">
+            <div>
+              <p class="t-eyebrow">Pricing</p>
+              <h2 class="t-h2">One starting point. Built around your needs.</h2>
+              <p class="t-lead">
+                No fixed packages and no price tiers. Tell us what you need and
+                we shape the scope and price to fit.
+              </p>
+            </div>
+            <div class="price-card">
+              <p class="t-small">Starting from</p>
+              <p class="price-amount">$100</p>
+              <p class="t-body">about Rp 1.600.000</p>
+              <p class="t-small">Final price depends on scope.</p>
+              <a href="contact.html" class="btn btn-primary"
+                >Get a project estimate</a
+              >
+              <p class="t-small">We reply within one business day.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Stats -->
+      <section class="section-sm stats">
+        <div class="container">
+          <div class="stats-row">
+            <div class="rv">
+              <p class="stat-num">
+                <span data-count="6" data-suffix="">6</span>
+              </p>
+              <p class="t-body">projects showcased</p>
+            </div>
+            <div class="rv">
+              <p class="stat-num">
+                <span data-count="4" data-suffix="">4</span>
+              </p>
+              <p class="t-body">website types</p>
+            </div>
+            <div class="rv">
+              <p class="stat-num">
+                <span data-count="100" data-suffix="%">100%</span>
+              </p>
+              <p class="t-body">responsive on every screen</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Selected work -->
+      <section class="section">
+        <div class="container">
+          <div class="section-row">
+            <div class="section-head rv">
+              <h2 class="t-h2">Selected work.</h2>
+            </div>
+            <a href="case-studies.html" class="link"
+              >View all case studies &rsaquo;</a
+            >
+          </div>
+          <div class="rail mt-12">
+            <div class="rv">
+              <a href="case-studies.html#natura-furniture" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #a16207">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="grid3" style="grid-template-rows: 1fr 1fr">
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="bx" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                        <div>
+                          <div class="ac" style="height: 62%"></div>
+                          <span class="l" style="width: 80%"></span
+                          ><span class="l" style="width: 45%"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Catalog &middot; Demo</p>
+                <h3 class="t-h3">Natura Furniture</h3>
+                <p class="t-body">
+                  A furniture catalog built for easy browsing.
+                </p>
+                <span class="link">View case study &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="case-studies.html#phi-tropmed" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #0f766e">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Company Profile &middot; Client project</p>
+                <h3 class="t-h3">PHI Tropmed</h3>
+                <p class="t-body">A company profile for a research center.</p>
+                <span class="link">View case study &rsaquo;</span></a
+              >
+            </div>
+            <div class="rv">
+              <a href="case-studies.html#tubanan" class="work-card"
+                ><div class="work-media">
+                  <div class="mk mkx" style="--a: #15803d">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div class="row" style="flex: 1.3">
+                        <div style="flex: 1.1">
+                          <span class="l h" style="width: 80%"></span
+                          ><span class="l h" style="width: 55%"></span
+                          ><span class="l" style="width: 70%"></span
+                          ><span class="l" style="width: 60%"></span>
+                          <div class="bt" style="margin-top: 10px"></div>
+                        </div>
+                        <div class="ac"></div>
+                      </div>
+                      <div class="grid3">
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                        <div class="bx"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Company Profile &middot; Client project</p>
+                <h3 class="t-h3">Tubanan</h3>
+                <p class="t-body">A village profile website.</p>
+                <span class="link">View case study &rsaquo;</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- How we work: stacked cards that reveal as you scroll -->
+      <section class="section process" id="how-we-work">
+        <div class="container">
+          <div class="section-head rv">
+            <h2 class="t-h2">How we work.</h2>
+            <p class="t-lead">
+              From the first conversation to launch, in four steps.
+            </p>
+          </div>
+          <ol class="stack-cards">
+            <li class="stack-card" style="--i: 0">
+              <div class="stack-card__inner tint-1">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We listen</h3>
+                  <span class="stack-card__num">01</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    We start by understanding your goals, audience and content.
+                    There are no fixed packages, so the plan is shaped around
+                    you.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Goals &amp; audience</li>
+                    <li>Content review</li>
+                    <li>Scope &amp; budget</li>
+                    <li>Free discussion</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="row" style="flex: 1.3">
+                          <div style="flex: 1.1">
+                            <span class="l h" style="width: 80%"></span
+                            ><span class="l h" style="width: 55%"></span
+                            ><span class="l" style="width: 70%"></span
+                            ><span class="l" style="width: 60%"></span>
+                            <div class="bt" style="margin-top: 10px"></div>
+                          </div>
+                          <div class="ac"></div>
+                        </div>
+                        <div class="grid3">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stack-card" style="--i: 1">
+              <div class="stack-card__inner tint-2">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We design</h3>
+                  <span class="stack-card__num">02</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    A clear, mobile-first layout in your brand colors, shared
+                    with you before we build anything.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Layout</li>
+                    <li>Brand colors</li>
+                    <li>Mobile first</li>
+                    <li>Your feedback</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="grid3" style="grid-template-rows: 1fr 1fr">
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stack-card" style="--i: 2">
+              <div class="stack-card__inner tint-3">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We build</h3>
+                  <span class="stack-card__num">03</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    Fast, accessible pages that work well on every screen size
+                    and device.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Responsive pages</li>
+                    <li>Fast loading</li>
+                    <li>Clean structure</li>
+                    <li>Device testing</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="ac" style="flex: 1.2"></div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stack-card" style="--i: 3">
+              <div class="stack-card__inner tint-4">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We launch</h3>
+                  <span class="stack-card__num">04</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    We publish, test and hand over, then stay available as your
+                    needs grow.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Launch &amp; testing</li>
+                    <li>Handover</li>
+                    <li>Ongoing support</li>
+                    <li>Custom requests</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div
+                          style="
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex: 1;
+                            justify-content: center;
+                          "
+                        >
+                          <span class="l h" style="width: 60%"></span
+                          ><span class="l h" style="width: 40%"></span
+                          ><span class="l" style="width: 50%"></span>
+                          <div
+                            class="bt"
+                            style="width: 26%; margin: 8px 0"
+                          ></div>
+                        </div>
+                        <div class="row" style="flex: 0.6">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <!-- FAQ -->
+      <section class="section section-alt">
+        <div class="container">
+          <div class="faq">
+            <div class="faq__head rv">
+              <p class="t-eyebrow">FAQ</p>
+              <h2 class="t-h2">We answer your questions.</h2>
+              <p class="t-lead">
+                Cannot find yours? Message us and we reply within one business
+                day.
+              </p>
+            </div>
+            <div class="faq__list rv">
+              <details class="faq__item" name="faq">
+                <summary>
+                  How much does a website cost?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Our websites start from $100 (about Rp 1.600.000). We don't
+                  use fixed packages or price tiers. The final price depends on
+                  your scope, and we shape it around your needs.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Is there a monthly fee?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Your estimate lists everything that is included. If you need
+                  ongoing support, hosting or updates, we can add them based on
+                  what you need.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Which website types do you build?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Company profile, catalog, news and blog, and landing page
+                  websites. If you need something different, tell us and we will
+                  find the right fit.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Do I own the design and content?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Ownership terms are written in your estimate before we start,
+                  so everything is clear from day one.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  How long until my website is ready?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  It depends on the scope and how quickly your content is ready.
+                  You get a clear timeline with your estimate.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Are the domain and hosting included?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  We can include them or work with the ones you already have. We
+                  confirm this in your estimate.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Will my website work on phones?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Yes. Every website is designed mobile first and tested on
+                  desktop, tablet and phone.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  How do I get started?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Send us a message with your goals. We reply within one
+                  business day with questions and an estimate.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Social media -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="social-bar rv">
+            <div>
+              <h2 class="t-h3">Follow @marikawanid</h2>
+              <p class="t-small">
+                Behind the scenes, new projects and web design tips.
+              </p>
+            </div>
+            <div class="social-pills">
+              <a
+                href="https://www.instagram.com/marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    /></svg></span
+                ><span class="social-pill__label">Instagram</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              ><a
+                href="https://www.youtube.com/@marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.2 22 12 22 12s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"
+                    /></svg></span
+                ><span class="social-pill__label">YouTube</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              ><a
+                href="https://www.tiktok.com/@marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"
+                    /></svg></span
+                ><span class="social-pill__label">TikTok</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="brand brand--footer">
+              <span class="brand__mark">MKC</span>
+              <span class="brand__name">Mari Kawan Creative</span>
+            </a>
+            <p class="footer-text footer-about">
+              Websites for brands and institutions.
+            </p>
+
+            <!-- Highlighted call to action -->
+            <div class="footer-cta">
+              <div class="footer-cta__copy">
+                <p class="footer-cta__eyebrow">Let's build yours.</p>
+                <p class="footer-cta__text">
+                  Tell us about your project and get a clear plan and quote.
+                </p>
+              </div>
+              <a href="contact.html" class="btn btn-cta"
+                >Get a Quote <span aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+          <div>
+            <h2 class="footer-title">Contact Info</h2>
+            <address class="footer-text">
+              123 Creative Street, Jakarta<br />Indonesia - 12345
+            </address>
+            <p class="footer-text">hello[at]marikawan.com</p>
+            <p class="footer-tel">Tel: +62 (800) 555 5555</p>
+            <p class="footer-hours">Monday to Friday | 9:00 AM - 6:00 PM</p>
+          </div>
+          <div>
+            <h2 class="footer-title">Site Links</h2>
+            <ul class="footer-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="case-studies.html">Case Studies</a></li>
+              <!-- TODO: link to a News &amp; Insights page when it exists -->
+              <li><a href="#">News &amp; Insights</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 &bull; Mari Kawan Creative is a Web Agency. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <button type="button" class="to-top" data-to-top aria-label="Back to top">
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+    <script src="assets/i18n.js"></script>
+    <script src="assets/main.js"></script>
+  </body>
+</html>
