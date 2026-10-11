@@ -2282,3 +2282,13 @@ html.modal-open {
     font-size: 32px;
   }
 }
+
+/* 27. Case studies on phones and tablets: content sits at the top and the
+   section is only as tall as its content, so tall screens get no big gaps */
+@media (max-width: 899px) {
+  .cs {
+    justify-content: flex-start;
+    min-height: 0;
+    padding-bottom: 2.5rem;
+  }
+}
