@@ -74,14 +74,25 @@
           ><a href="contact.html">Contact</a>
         </nav>
         <div class="site-header__actions">
-          <div class="lang-switch" role="group" aria-label="Language">
-            <button type="button" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" data-lang="id" aria-pressed="false">
-              ID
+          <div class="lang-menu" data-lang-menu>
+            <button
+              type="button"
+              class="lang-btn"
+              data-lang-toggle
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="lang-list"
+              aria-label="Language"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+              <span data-lang-current>EN</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
             </button>
-            <button type="button" data-lang="es" aria-pressed="false">
-              ES
-            </button>
+            <div id="lang-list" class="lang-list" role="group" aria-label="Language" hidden>
+              <button type="button" data-lang="en" aria-pressed="true">English</button>
+              <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
+              <button type="button" data-lang="es" aria-pressed="false">Español</button>
+            </div>
           </div>
           <button
             type="button"
@@ -167,20 +178,24 @@
         <div class="container cs-head">
           <p class="t-eyebrow">Case studies</p>
           <h1 class="t-h1">Work we are proud of.</h1>
+          <div class="cs-filter" role="group" aria-label="Filter by category">
+            <button type="button" class="cs-chip" data-cs-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="cs-chip" data-cs-filter="company-profile" aria-pressed="false">Company Profile</button>
+            <button type="button" class="cs-chip" data-cs-filter="catalog" aria-pressed="false">Catalog</button>
+            <button type="button" class="cs-chip" data-cs-filter="news-blog" aria-pressed="false">News / Blog</button>
+            <button type="button" class="cs-chip" data-cs-filter="landing-page" aria-pressed="false">Landing Page</button>
+          </div>
         </div>
         <div class="cs-track" data-cs-track tabindex="0">
           <article
             class="cs-slide is-active"
             id="natura-furniture"
             data-name="Natura Furniture"
-            data-tag="Catalog · Demo"
+            data-tag="Catalog"
             data-desc="A furniture catalog built for easy browsing."
-            data-url="https://marikawanid.github.io/natura-furniture/"
             data-type="Catalog"
-            data-status="Demo project"
-            data-host="marikawanid.github.io/natura-furniture"
+            data-cat="catalog"
             aria-roledescription="slide"
-            aria-label="1 of 6"
           >
             <div class="cs-media" style="--a: #a16207">
               <div class="mk mkx" style="--a: #a16207">
@@ -411,14 +426,11 @@
             class="cs-slide"
             id="tropmed-blog"
             data-name="Tropmed Blog"
-            data-tag="News / Blog · Demo"
+            data-tag="News / Blog"
             data-desc="A clean news and article website."
-            data-url="https://dummy.cphtropmed.my.id/"
             data-type="News / Blog"
-            data-status="Demo project"
-            data-host="dummy.cphtropmed.my.id"
+            data-cat="news-blog"
             aria-roledescription="slide"
-            aria-label="2 of 6"
           >
             <div class="cs-media" style="--a: #0f6182">
               <div class="mk mkx" style="--a: #0f6182">
@@ -618,14 +630,11 @@
             class="cs-slide"
             id="clipform"
             data-name="Clipform"
-            data-tag="Landing Page · Demo"
+            data-tag="Landing Page"
             data-desc="A landing page for a social media course."
-            data-url="https://marikawanid.github.io/clipform/"
             data-type="Landing Page"
-            data-status="Demo project"
-            data-host="marikawanid.github.io/clipform"
+            data-cat="landing-page"
             aria-roledescription="slide"
-            aria-label="3 of 6"
           >
             <div class="cs-media" style="--a: #7c3aed">
               <div class="mk mkx" style="--a: #7c3aed">
@@ -808,14 +817,11 @@
             class="cs-slide"
             id="pakaiwebaja"
             data-name="PakaiWebAja"
-            data-tag="Company Profile · Demo"
+            data-tag="Company Profile"
             data-desc="A company profile for a website service."
-            data-url="https://github.com/marikawanid/PakaiWebAja"
             data-type="Company Profile"
-            data-status="Demo project"
-            data-host="github.com/marikawanid/PakaiWebAja"
+            data-cat="company-profile"
             aria-roledescription="slide"
-            aria-label="4 of 6"
           >
             <div class="cs-media" style="--a: #1684ad">
               <div class="mk mkx" style="--a: #1684ad">
@@ -978,14 +984,11 @@
             class="cs-slide"
             id="phi-tropmed"
             data-name="PHI Tropmed"
-            data-tag="Company Profile · Client project"
+            data-tag="Company Profile"
             data-desc="A company profile for a research center."
-            data-url="https://phi.centertropmed-ugm.org"
             data-type="Company Profile"
-            data-status="Client project"
-            data-host="phi.centertropmed-ugm.org"
+            data-cat="company-profile"
             aria-roledescription="slide"
-            aria-label="5 of 6"
           >
             <div class="cs-media" style="--a: #0f766e">
               <div class="mk mkx" style="--a: #0f766e">
@@ -1148,14 +1151,11 @@
             class="cs-slide"
             id="tubanan"
             data-name="Tubanan"
-            data-tag="Company Profile · Client project"
+            data-tag="Company Profile"
             data-desc="A village profile website."
-            data-url="https://tubanan.id"
             data-type="Company Profile"
-            data-status="Client project"
-            data-host="tubanan.id"
+            data-cat="company-profile"
             aria-roledescription="slide"
-            aria-label="6 of 6"
           >
             <div class="cs-media" style="--a: #15803d">
               <div class="mk mkx" style="--a: #15803d">
@@ -1317,7 +1317,7 @@
         </div>
         <div class="container cs-info">
           <div class="cs-info__text" data-cs-text aria-live="polite">
-            <p class="t-eyebrow" data-cs-tag>Catalog &middot; Demo</p>
+            <p class="t-eyebrow" data-cs-tag>Catalog</p>
             <h2 class="t-h2" data-cs-name>Natura Furniture</h2>
             <p class="t-body" data-cs-desc>
               A furniture catalog built for easy browsing.
@@ -1449,27 +1449,7 @@
                 <dt>Type</dt>
                 <dd data-modal-type data-modal-dyn></dd>
               </div>
-              <div>
-                <dt>Status</dt>
-                <dd data-modal-status data-modal-dyn></dd>
-              </div>
-              <div>
-                <dt>Website</dt>
-                <dd data-modal-host data-modal-dyn></dd>
-              </div>
-              <div>
-                <dt>Devices</dt>
-                <dd data-modal-devices data-modal-dyn></dd>
-              </div>
-            </dl>
-            <a
-              class="btn btn-primary"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              data-modal-url
-              >Visit website &#8599;</a
-            >
+              </dl>
           </div>
         </div>
       </dialog>
