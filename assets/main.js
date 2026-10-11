@@ -111,18 +111,18 @@
   var langList = langMenu && langMenu.querySelector(".lang-list");
   function langOpen(open) {
     if (!langMenu) return;
-    langList.hidden = !open;
+    langMenu.classList.toggle("is-open", open);
     langToggle.setAttribute("aria-expanded", String(open));
   }
   if (langMenu) {
     langToggle.addEventListener("click", function () {
-      langOpen(langList.hidden);
+      langOpen(!langMenu.classList.contains("is-open"));
     });
     document.addEventListener("click", function (e) {
       if (!langMenu.contains(e.target)) langOpen(false);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !langList.hidden) {
+      if (e.key === "Escape" && langMenu.classList.contains("is-open")) {
         langOpen(false);
         langToggle.focus();
       }
@@ -407,7 +407,19 @@
             window.location.pathname + (f === "all" ? "" : "?type=" + f),
           );
         } catch (e) {}
-        csBuild(f);
+        // Fade the slider out, swap the cases, fade back in.
+        cs.classList.add("is-filtering");
+        setTimeout(
+          function () {
+            csBuild(f);
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                cs.classList.remove("is-filtering");
+              });
+            });
+          },
+          reduceMotion ? 0 : 220,
+        );
       });
     });
 
