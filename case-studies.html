@@ -88,7 +88,7 @@
               <span data-lang-current>EN</span>
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
             </button>
-            <div id="lang-list" class="lang-list" role="group" aria-label="Language" hidden>
+            <div id="lang-list" class="lang-list" role="group" aria-label="Language">
               <button type="button" data-lang="en" aria-pressed="true">English</button>
               <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
               <button type="button" data-lang="es" aria-pressed="false">Español</button>
@@ -176,8 +176,8 @@
         aria-label="Case studies"
       >
         <div class="container cs-head">
-          <p class="t-eyebrow">Case studies</p>
-          <h1 class="t-h1">Work we are proud of.</h1>
+          <h1 class="t-h1">Case studies</h1>
+          <p class="t-tagline">Work we are proud of.</p>
           <div class="cs-filter" role="group" aria-label="Filter by category">
             <button type="button" class="cs-chip" data-cs-filter="all" aria-pressed="true">All</button>
             <button type="button" class="cs-chip" data-cs-filter="company-profile" aria-pressed="false">Company Profile</button>
@@ -1322,11 +1322,10 @@
             <p class="t-body" data-cs-desc>
               A furniture catalog built for easy browsing.
             </p>
-            <button type="button" class="btn btn-light" data-cs-details>
-              View details
-            </button>
           </div>
-          <div class="cs-controls">
+          <div class="cs-info__actions">
+            <button type="button" class="btn btn-light" data-cs-details>View details</button>
+            <div class="cs-controls">
             <button class="cs-arrow" data-cs-prev aria-label="Previous case">
               <svg
                 viewBox="0 0 24 24"
@@ -1358,6 +1357,7 @@
               </svg>
             </button>
           </div>
+        </div>
         </div>
       </section>
       <!-- Case study pop-up with a gallery. Filled by main.js from the slide's hidden .cs-gallery -->
