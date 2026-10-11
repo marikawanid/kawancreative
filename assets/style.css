@@ -723,22 +723,6 @@ a {
 .page-hero p.rv:last-of-type {
   justify-content: center;
 }
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  text-align: center;
-  border-block: 1px solid var(--line);
-  padding-block: 2.5rem;
-}
-.stat-num {
-  font-variant-numeric: tabular-nums;
-  font-size: var(--fs-number);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: var(--c-blue);
-}
 .feature {
   display: grid;
   gap: 2.5rem;
@@ -2074,4 +2058,127 @@ html.modal-open {
   top: -6%;
   left: -4%;
   width: 190%;
+}
+
+
+/* 20. Header: solid background (no see-through to the page behind) --- */
+.site-header {
+  background: var(--bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* 21. Language dropdown: only the current language shows until clicked */
+.lang-menu {
+  position: relative;
+}
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2.25rem;
+  padding: 0 0.6rem 0 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--c-ink);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.lang-btn:hover {
+  background: var(--c-light);
+}
+.lang-btn svg:last-child {
+  transition: rotate 0.2s;
+}
+.lang-btn[aria-expanded="true"] svg:last-child {
+  rotate: 180deg;
+}
+.lang-list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 60;
+  min-width: 11.5rem;
+  padding: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface);
+  box-shadow: 0 18px 40px -18px rgba(11, 52, 71, 0.35);
+}
+.lang-list[hidden] {
+  display: none;
+}
+.lang-list button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.6rem;
+  color: var(--c-ink);
+  font-size: var(--fs-ui);
+  text-align: left;
+}
+.lang-list button:hover {
+  background: var(--c-light);
+}
+.lang-list button[aria-pressed="true"] {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+.lang-list button[aria-pressed="true"]::after {
+  content: "\2713";
+}
+
+/* 22. Case studies: category filter ---------------------------------- */
+.cs-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cs-filter::-webkit-scrollbar {
+  display: none;
+}
+.cs-chip {
+  flex: 0 0 auto;
+  background: transparent;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: #fff;
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.cs-chip:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+.cs-chip[aria-pressed="true"] {
+  border-color: #fff;
+  background: #fff;
+  color: #0b3447;
+}
+.cs-controls[hidden] {
+  display: none;
+}
+
+/* 23. Case studies on mobile: text, then arrows in a fixed row -------- */
+@media (max-width: 639px) {
+  .cs-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+  .cs-controls {
+    justify-content: flex-start;
+  }
 }

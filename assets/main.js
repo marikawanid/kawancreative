@@ -1,6 +1,6 @@
 /* =========================================================
    Mari Kawan Creative: site script
-   Sections: 0 Language and dark mode, 0b Back to top, 1 Mobile menu, 2 Scroll reveal, 3 Case study slider, 4 Stacked process cards, 5 Count-up numbers, 6 Hero slider
+   Sections: 0 Language and dark mode, 0b Back to top, 1 Mobile menu, 2 Scroll reveal, 3 Case study slider, 4 Stacked process cards, 6 Hero slider
    ========================================================= */
 (function () {
   "use strict";
@@ -93,14 +93,41 @@
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.lang === next));
     });
+    var langCur = document.querySelector("[data-lang-current]");
+    if (langCur) langCur.textContent = next.toUpperCase();
     document.dispatchEvent(new Event("mkc:lang"));
   }
   document.querySelectorAll("[data-lang]").forEach(function (b) {
     b.addEventListener("click", function () {
       store.set("mkc-lang", b.dataset.lang);
       applyLang(b.dataset.lang);
+      langOpen(false);
     });
   });
+
+  // Language dropdown: shows only the current language until it is clicked.
+  var langMenu = document.querySelector("[data-lang-menu]");
+  var langToggle = langMenu && langMenu.querySelector("[data-lang-toggle]");
+  var langList = langMenu && langMenu.querySelector(".lang-list");
+  function langOpen(open) {
+    if (!langMenu) return;
+    langList.hidden = !open;
+    langToggle.setAttribute("aria-expanded", String(open));
+  }
+  if (langMenu) {
+    langToggle.addEventListener("click", function () {
+      langOpen(langList.hidden);
+    });
+    document.addEventListener("click", function (e) {
+      if (!langMenu.contains(e.target)) langOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !langList.hidden) {
+        langOpen(false);
+        langToggle.focus();
+      }
+    });
+  }
   var savedLang = store.get("mkc-lang");
   applyLang(
     savedLang && (savedLang === "en" || dict[savedLang]) ? savedLang : "en",
@@ -163,16 +190,29 @@
     });
   }
 
-  /* 3. Case study slider (case-studies.html): loops forever -- */
+  /* 3. Case study slider (case-studies.html): loops forever, with category filter -- */
   var cs = document.querySelector("[data-cs]");
   if (cs) {
     var csTrack = cs.querySelector("[data-cs-track]");
-    var csOriginals = Array.prototype.slice.call(csTrack.children);
+    var csAll = Array.prototype.slice.call(csTrack.children); // every real case, kept even when filtered out
+    var csOriginals = csAll.slice(); // real cases shown for the current filter
     var csN = csOriginals.length;
+    var csLoop = true;
+    var csOff = 0; // index of the first real slide inside csSlides
+    var csSlides = [];
     var csText = cs.querySelector("[data-cs-text]");
     var csTag = cs.querySelector("[data-cs-tag]");
     var csName = cs.querySelector("[data-cs-name]");
     var csDesc = cs.querySelector("[data-cs-desc]");
+    var csControls = cs.querySelector(".cs-controls");
+    var csChips = Array.prototype.slice.call(
+      cs.querySelectorAll("[data-cs-filter]"),
+    );
+    var csFilter = "all";
+    var csIndex = 0; // position of the centered slide in csSlides
+    var csReal = -1; // which real case is shown (0 to csN - 1)
+    var csSwapTimer;
+    var csSettleTimer;
 
     // Copies of the slides are added before and after the real ones, so the
     // track never reaches an end. Layout: [copies | real slides | copies].
@@ -188,21 +228,6 @@
       copy.setAttribute("aria-hidden", "true");
       return copy;
     }
-    csOriginals.forEach(function (s) {
-      csTrack.appendChild(csClone(s));
-    });
-    csOriginals
-      .slice()
-      .reverse()
-      .forEach(function (s) {
-        csTrack.insertBefore(csClone(s), csTrack.firstChild);
-      });
-    var csSlides = Array.prototype.slice.call(csTrack.children);
-
-    var csIndex = csN; // position of the centered slide in csSlides
-    var csReal = -1; // which real case is shown (0 to csN - 1)
-    var csSwapTimer;
-    var csSettleTimer;
 
     // Scroll position that centers slide i in the track.
     function csCenter(i) {
@@ -215,6 +240,25 @@
         left: csCenter(i),
         behavior: reduceMotion ? "auto" : "smooth",
       });
+    }
+    function csShowText(d) {
+      csTag.textContent = T(d.tag);
+      csName.textContent = T(d.name);
+      csDesc.textContent = T(d.desc);
+    }
+    // Keeps the text block the same height for every case, so the arrows
+    // never move up or down when the text changes (or wraps differently).
+    function csLockHeight() {
+      csText.style.minHeight = "";
+      var max = 0;
+      csOriginals.forEach(function (s) {
+        csShowText(s.dataset);
+        max = Math.max(max, csText.offsetHeight);
+      });
+      csText.style.minHeight = max + "px";
+      var cur =
+        csReal >= 0 && csSlides[csIndex] ? csSlides[csIndex] : csOriginals[0];
+      csShowText(cur.dataset);
     }
     // Marks slide i active and swaps the text under the slider with a short fade.
     function csSetActive(i) {
@@ -230,9 +274,7 @@
       csText.classList.add("is-swap");
       csSwapTimer = setTimeout(
         function () {
-          csTag.textContent = T(data.tag);
-          csName.textContent = T(data.name);
-          csDesc.textContent = T(data.desc);
+          csShowText(data);
           csText.classList.remove("is-swap");
         },
         reduceMotion ? 0 : 180,
@@ -253,8 +295,57 @@
     }
     // When scrolling stops on a copy, jump to the real slide that looks the same.
     function csRecenter() {
+      if (!csLoop) return;
       if (csIndex < csN) csJump(csIndex + csN);
       else if (csIndex >= 2 * csN) csJump(csIndex - csN);
+    }
+
+    // Shows only the cases of one category ("all" shows everything).
+    function csBuild(filter, focusId) {
+      var list = csAll.filter(function (s) {
+        return filter === "all" || s.dataset.cat === filter;
+      });
+      if (!list.length) {
+        filter = "all";
+        list = csAll.slice();
+      }
+      csFilter = filter;
+      csOriginals = list;
+      csN = list.length;
+      csLoop = csN > 1;
+      csOff = csLoop ? csN : 0;
+      csReal = -1;
+      clearTimeout(csSwapTimer);
+
+      csTrack.innerHTML = "";
+      csOriginals.forEach(function (s) {
+        s.classList.remove("is-active");
+        csTrack.appendChild(s);
+      });
+      if (csLoop) {
+        csOriginals.forEach(function (s) {
+          csTrack.appendChild(csClone(s));
+        });
+        csOriginals
+          .slice()
+          .reverse()
+          .forEach(function (s) {
+            csTrack.insertBefore(csClone(s), csTrack.firstChild);
+          });
+      }
+      csSlides = Array.prototype.slice.call(csTrack.children);
+      if (csControls) csControls.hidden = !csLoop; // arrows make no sense for a single case
+      csChips.forEach(function (c) {
+        c.setAttribute("aria-pressed", String(c.dataset.csFilter === filter));
+      });
+
+      var start = csOff;
+      if (focusId) {
+        for (var k = 0; k < csN; k++)
+          if (csOriginals[k].id === focusId) start = csOff + k;
+      }
+      csLockHeight();
+      csJump(start);
     }
 
     // Find the slide closest to the center (works for swipe, arrows and clicks).
@@ -280,10 +371,11 @@
       });
     });
 
-    csSlides.forEach(function (s, k) {
-      s.addEventListener("click", function () {
-        if (k !== csIndex) csGoTo(k);
-      });
+    // One listener for all slides (the slides are rebuilt when the filter changes).
+    csTrack.addEventListener("click", function (e) {
+      var s = e.target.closest(".cs-slide");
+      var k = s ? csSlides.indexOf(s) : -1;
+      if (k >= 0 && k !== csIndex) csGoTo(k);
     });
     cs.querySelector("[data-cs-prev]").addEventListener("click", function () {
       csGoTo(csIndex - 1);
@@ -292,6 +384,7 @@
       csGoTo(csIndex + 1);
     });
     csTrack.addEventListener("keydown", function (e) {
+      if (!csLoop) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         csGoTo(csIndex - 1);
@@ -302,32 +395,53 @@
       }
     });
 
+    // Category filter chips. The choice is kept in the address, e.g. case-studies.html?type=catalog
+    csChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var f = chip.dataset.csFilter;
+        if (f === csFilter) return;
+        try {
+          history.replaceState(
+            null,
+            "",
+            window.location.pathname + (f === "all" ? "" : "?type=" + f),
+          );
+        } catch (e) {}
+        csBuild(f);
+      });
+    });
+
     // Open the slide named in the URL, e.g. case-studies.html#tubanan
     function csFromHash(first) {
       var id = window.location.hash.slice(1);
-      for (var k = csN; k < 2 * csN; k++) {
-        if (csSlides[k].id === id) {
-          if (first) csJump(k);
-          else csGoTo(k);
-          return;
-        }
+      var k = -1;
+      for (var j = csOff; j < csOff + csN; j++) {
+        if (csSlides[j].id === id) k = j;
       }
-      if (first) csJump(csN);
+      if (k < 0 && id && csAll.some(function (s) { return s.id === id; })) {
+        csBuild("all", id); // that case is hidden by the current filter
+        return;
+      }
+      if (k >= 0) {
+        if (first) csJump(k);
+        else csGoTo(k);
+      }
     }
     window.addEventListener("hashchange", function () {
       csFromHash(false);
     });
+
+    var startType = new URLSearchParams(window.location.search).get("type");
+    csBuild(startType || "all");
     csFromHash(true);
     window.addEventListener("load", function () {
+      csLockHeight();
       csJump(csIndex);
     });
 
     // Re-translate the text under the slider when the language changes.
     document.addEventListener("mkc:lang", function () {
-      var d = csSlides[csIndex].dataset;
-      csTag.textContent = T(d.tag);
-      csName.textContent = T(d.name);
-      csDesc.textContent = T(d.desc);
+      csLockHeight();
     });
 
     // "View details" pop-up with an image gallery (native <dialog>).
@@ -349,12 +463,6 @@
         modal.querySelector("[data-modal-name]").textContent = T(d.name);
         modal.querySelector("[data-modal-desc]").textContent = T(d.desc);
         modal.querySelector("[data-modal-type]").textContent = T(d.type);
-        modal.querySelector("[data-modal-status]").textContent = T(d.status);
-        modal.querySelector("[data-modal-host]").textContent = d.host;
-        modal.querySelector("[data-modal-devices]").textContent = T(
-          "Desktop, tablet, mobile",
-        );
-        modal.querySelector("[data-modal-url]").href = d.url;
         mCaption.textContent = T(mItems[mIndex].dataset.caption);
       }
       function mShow(i) {
@@ -441,6 +549,7 @@
     window.addEventListener("resize", function () {
       clearTimeout(csResize);
       csResize = setTimeout(function () {
+        csLockHeight();
         csJump(csIndex);
       }, 150);
     });
@@ -473,43 +582,6 @@
       { passive: true },
     );
     updateStack();
-  }
-
-  /* 5. Count-up numbers (<span data-count="6" data-suffix="%">) */
-  var counters = document.querySelectorAll("[data-count]");
-
-  function runCount(el) {
-    var end = parseFloat(el.dataset.count);
-    var suffix = el.dataset.suffix || "";
-    var duration = 1600; // ms
-    var start = null;
-    function frame(now) {
-      if (start === null) start = now;
-      var p = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3); // ease-out
-      el.textContent = Math.round(end * eased) + suffix;
-      if (p < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // With reduced motion (or no IntersectionObserver) the final numbers stay as written in the HTML.
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    var countObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            runCount(entry.target);
-            countObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.6 },
-    );
-    counters.forEach(function (el) {
-      el.textContent = "0" + (el.dataset.suffix || "");
-      countObserver.observe(el);
-    });
   }
 
   /* 6. Hero slider ------------------------------------------ */
