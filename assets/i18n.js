@@ -91,7 +91,7 @@ window.MKC_I18N = {
     "Custom & More": "Custom & Lainnya",
     "Something different? We listen first, then design and build what fits your needs.":
       "Butuh sesuatu yang berbeda? Kami mendengarkan dulu, lalu merancang dan membangun yang sesuai kebutuhan Anda.",
-    "Tell us your needs ›": "Ceritakan kebutuhan Anda ›",
+    "Tell us your needs ›": "Sampaikan kebutuhan Anda ›",
     Pricing: "Harga",
     "One starting point. Built around your needs.":
       "Satu titik awal. Dibuat sesuai kebutuhan Anda.",
@@ -281,6 +281,24 @@ window.MKC_I18N = {
     "Visit website ↗": "Kunjungi website ↗",
     All: "Semua",
     "Filter by category": "Filter kategori",
+    "Websites designed around your goals, whatever the scope of your project.":
+      "Website yang dirancang sesuai tujuan Anda, apa pun skala proyeknya.",
+    "Present your products in a tidy catalog that is easy to browse on any device.":
+      "Pajang produk Anda dalam katalog yang rapi dan nyaman dijelajahi di perangkat apa pun.",
+    "One focused page with a clear message, designed to turn visitors into conversions.":
+      "Satu halaman khusus dengan pesan yang terarah, dirancang untuk mengubah pengunjung menjadi conversions.",
+    "One starting price. Shaped around your needs.":
+      "Satu harga awal. Disesuaikan dengan kebutuhan Anda.",
+    "No fixed packages. Tell us what you need and we will tailor the scope and cost.":
+      "Tanpa paket kaku. Ceritakan kebutuhan Anda, dan kami sesuaikan scope serta biayanya.",
+    "We will reply within one business day at most.":
+      "Kami akan merespons maksimal dalam satu hari kerja.",
+    "Case Studies.": "Studi Kasus.",
+    "A clear, mobile-first layout in your brand colors. We can follow your design preferences, or you can ask for our opinion and suggestions. You see everything before we build.":
+      "Tata letak yang jelas dan mengutamakan seluler dalam warna brand Anda. Kami bisa mendesain sesuai preferensi Anda, atau Anda bisa meminta pendapat dan saran dari kami. Semuanya Anda lihat dulu sebelum kami mulai membangun.",
+    "* Terms and conditions apply.": "* Syarat dan ketentuan berlaku.",
+    "Follow us for the latest updates from Mari Kawan Creative.":
+      "Ikuti kami untuk kabar terbaru dari Mari Kawan Creative.",
     "Previous case": "Kasus sebelumnya",
     "Next case": "Kasus berikutnya",
     "View details": "Lihat detail",
@@ -599,6 +617,24 @@ window.MKC_I18N = {
     "Visit website ↗": "Visitar sitio web ↗",
     All: "Todos",
     "Filter by category": "Filtrar por categoría",
+    "Websites designed around your goals, whatever the scope of your project.":
+      "Sitios web diseñados en torno a tus objetivos, sea cual sea el alcance de tu proyecto.",
+    "Present your products in a tidy catalog that is easy to browse on any device.":
+      "Presenta tus productos en un catálogo ordenado y fácil de explorar en cualquier dispositivo.",
+    "One focused page with a clear message, designed to turn visitors into conversions.":
+      "Una página enfocada con un mensaje claro, diseñada para convertir visitantes en conversiones.",
+    "One starting price. Shaped around your needs.":
+      "Un precio de partida. Adaptado a tus necesidades.",
+    "No fixed packages. Tell us what you need and we will tailor the scope and cost.":
+      "Sin paquetes fijos. Cuéntanos qué necesitas y ajustamos el alcance y el costo.",
+    "We will reply within one business day at most.":
+      "Responderemos como máximo en un día hábil.",
+    "Case Studies.": "Casos de éxito.",
+    "A clear, mobile-first layout in your brand colors. We can follow your design preferences, or you can ask for our opinion and suggestions. You see everything before we build.":
+      "Un diseño claro y pensado primero para móvil, con los colores de tu marca. Podemos seguir tus preferencias de diseño, o puedes pedirnos opinión y sugerencias. Lo ves todo antes de que empecemos a construir.",
+    "* Terms and conditions apply.": "* Se aplican términos y condiciones.",
+    "Follow us for the latest updates from Mari Kawan Creative.":
+      "Síguenos para conocer las novedades de Mari Kawan Creative.",
     "Previous case": "Caso anterior",
     "Next case": "Caso siguiente",
     "View details": "Ver detalles",

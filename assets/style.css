@@ -1,10 +1,5 @@
 /* =========================================================
    Mari Kawan Creative: design system
-   Edit the tokens in section 1 to change the whole site.
-   Sections: 1 Tokens, 2 Typography, 3 Layout, 4 Buttons,
-   5 Header, 6 Hero slider, 7 Cards, 8 Sections (8b-8h: cards row, pricing,
-   how we work, FAQ, social, CTA, case slider), 9 Footer,
-   10 Forms, 11 Mockups, 12 Motion
    ========================================================= */
 
 /* 1. Tokens ------------------------------------------------ */
@@ -2290,5 +2285,163 @@ html.modal-open {
     justify-content: flex-start;
     min-height: 0;
     padding-bottom: 2.5rem;
+  }
+}
+
+
+/* 28. Home: cards without a tag keep their spacing */
+.work-media + .t-h3 {
+  margin-top: 1.25rem;
+}
+
+/* 29. Process steps: real bullet points */
+.stack-card__tags li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.stack-card__tags li::before {
+  content: "";
+  flex: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+.stack-card__note {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--fs-caption);
+  opacity: 0.75;
+}
+
+/* Anchors from the home page land below the sticky header */
+section[id] {
+  scroll-margin-top: calc(var(--nav-h, 4.5rem) + 1rem);
+}
+
+/* WM DONY MAULANA */
+/* =========================================================
+   Efek Hover Pop-out Mockup Browser Saja (.grid-5)
+   ========================================================= */
+@media (hover: hover) and (min-width: 768px) {
+  /* 1. Mengatur z-index agar elemen yang pop-out selalu di depan */
+  .grid-5 > .rv {
+    position: relative;
+    z-index: 1;
+  }
+  .grid-5 > .rv:hover {
+    z-index: 999; 
+  }
+  
+  .grid-5 .work-card {
+    position: relative;
+  }
+  
+  /* 2. Izinkan mockup keluar dari batas background biru (.work-media) saat disorot */
+  .grid-5 .work-card:hover .work-media {
+    overflow: visible !important;
+  }
+
+  /* 3. Setup transisi animasi KHUSUS untuk kotak mockup (.mk) */
+  .grid-5 .work-media .mk {
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+                translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.4s ease;
+  }
+
+  /* 4. Efek Pop-out pada Mockup (.mk) */
+  .grid-5 .work-card:hover .work-media .mk {
+    translate: 0 0; /* Reset posisi translateY bawaan agar efek melompat lebih terasa */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.8); 
+    /* Tambahan outline putih tipis agar mockup terpisah secara tegas dari background */
+  }
+
+  /* =========================================================
+     MENGATUR ARAH ZOOM & SKALA 1.5x (Agar tidak terpotong layar)
+     ========================================================= */
+
+  /* Kartu 1 & 2 (Kiri): Membesar ke arah kanan atas */
+  .grid-5 > .rv:nth-child(1) .work-card:hover .work-media .mk,
+  .grid-5 > .rv:nth-child(2) .work-card:hover .work-media .mk {
+    transform-origin: bottom left;
+    transform: scale(1.5) translateY(-5%) translateX(5%);
+  }
+
+  /* Kartu 3 (Tengah): Membesar pas di tengah atas */
+  .grid-5 > .rv:nth-child(3) .work-card:hover .work-media .mk {
+    transform-origin: bottom center;
+    transform: scale(1.5) translateY(-5%);
+  }
+
+  /* Kartu 4 & 5 (Kanan): Membesar ke arah kiri atas */
+  .grid-5 > .rv:nth-child(4) .work-card:hover .work-media .mk,
+  .grid-5 > .rv:nth-child(5) .work-card:hover .work-media .mk {
+    transform-origin: bottom right;
+    transform: scale(1.5) translateY(-5%) translateX(-5%);
+  }
+}
+
+/* =========================================================
+   Efek Hover Pop-out Mockup Browser Saja (.rail - Case Studies)
+   ========================================================= */
+@media (hover: hover) and (min-width: 768px) {
+  /* 1. Mengatur z-index agar elemen yang pop-out selalu di depan */
+  .rail > .rv {
+    position: relative;
+    z-index: 1;
+  }
+  .rail > .rv:hover {
+    z-index: 999; 
+  }
+  
+  .rail .work-card {
+    position: relative;
+  }
+  
+  /* 2. Izinkan mockup keluar dari batas background warna saat disorot */
+  .rail .work-card:hover .work-media {
+    overflow: visible !important;
+  }
+
+  /* 3. Setup transisi animasi KHUSUS untuk kotak mockup (.mk) */
+  .rail .work-media .mk {
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+                translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.4s ease;
+  }
+
+  /* 4. Efek Pop-out pada Mockup (.mk) di Case Studies */
+  .rail .work-card:hover .work-media .mk {
+    translate: 0 0; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.8); 
+  }
+
+  /* =========================================================
+     MENGATUR ARAH ZOOM & SKALA 1.2x UNTUK CASE STUDIES
+     ========================================================= */
+
+  /* Kartu 1 (Kiri): Membesar ke arah kanan atas */
+  .rail > .rv:nth-child(1) .work-card:hover .work-media .mk {
+    transform-origin: bottom left;
+    transform: scale(1.2) translateY(-2%) translateX(2%);
+  }
+
+  /* Kartu 2 (Tengah): Membesar pas di tengah atas */
+  .rail > .rv:nth-child(2) .work-card:hover .work-media .mk {
+    transform-origin: bottom center;
+    transform: scale(1.2) translateY(-2%);
+  }
+
+  /* Kartu 3 (Kanan): Membesar ke arah kiri atas */
+  .rail > .rv:nth-child(3) .work-card:hover .work-media .mk {
+    transform-origin: bottom right;
+    transform: scale(1.2) translateY(-2%) translateX(-2%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail .work-media .mk {
+    transition: none;
   }
 }
