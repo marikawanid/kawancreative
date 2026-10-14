@@ -1260,7 +1260,7 @@ a {
 .mk {
   overflow: hidden;
   aspect-ratio: 16 / 10;
-  border-radius: 1rem;
+  border-radius: 0.65rem; /* Diperkecil dari 1rem agar sudut melengkung pas dengan bar tipis */
   background: #fff;
   box-shadow:
     0 30px 60px -25px rgba(15, 50, 70, 0.35),
@@ -1268,19 +1268,20 @@ a {
 }
 .mk-bar {
   display: flex;
-  gap: 6px;
-  padding: 10px 12px;
+  align-items: center;
+  gap: 4px; /* Diperkecil dari 6px */
+  padding: 5px 9px; /* Diperkecil dari 10px 12px (tinggi bar turun hampir 50%) */
   border-bottom: 1px solid #e2e8f0;
   background: #f1f5f9;
 }
 .mk-bar i {
-  width: 9px;
-  height: 9px;
+  width: 6px; /* Diperkecil dari 9px */
+  height: 6px; /* Diperkecil dari 9px */
   border-radius: 50%;
   background: #cbd5e1;
 }
 .mk .mk-body {
-  height: calc(100% - 31px);
+  height: calc(100% - 17px); /* Disesuaikan dari 31px (5px + 5px + 6px + 1px border = 17px) */
 }
 .mk-body {
   display: flex;
