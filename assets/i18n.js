@@ -26,7 +26,7 @@ window.MKC_I18N = {
     Contact: "Kontak",
     Language: "Bahasa",
     "Toggle dark mode": "Ganti mode gelap",
-    "Get a Quote": "Minta Penawaran",
+    "Get a Quote": "Dapatkan Penawaran",
     Menu: "Menu",
     Featured: "Unggulan",
     "Slider controls": "Kontrol slider",
@@ -100,7 +100,7 @@ window.MKC_I18N = {
     "Starting from": "Mulai dari",
     "about Rp 1.600.000": "sekitar Rp 1.600.000",
     "Final price depends on scope.": "Harga akhir tergantung cakupan.",
-    "Get a project estimate": "Minta estimasi proyek",
+    "Get a project estimate": "Dapatkan penawaran",
     "We reply within one business day.": "Kami membalas dalam satu hari kerja.",
     "projects showcased": "proyek ditampilkan",
     "website types": "jenis website",
@@ -162,7 +162,7 @@ window.MKC_I18N = {
       "Website kami mulai dari $100 (sekitar Rp 1.600.000). Kami tidak memakai paket tetap atau tingkatan harga. Harga akhir tergantung cakupan Anda, dan kami menyesuaikannya dengan kebutuhan Anda.",
     "Is there a monthly fee?": "Apakah ada biaya bulanan?",
     "Your estimate lists everything that is included. If you need ongoing support, hosting or updates, we can add them based on what you need.":
-      "Estimasi Anda mencantumkan semua yang termasuk. Jika Anda butuh dukungan berkelanjutan, hosting, atau pembaruan, kami bisa menambahkannya sesuai kebutuhan.",
+      "Penawaran Anda mencantumkan semua yang termasuk. Jika Anda butuh dukungan berkelanjutan, hosting, atau pembaruan, kami bisa menambahkannya sesuai kebutuhan.",
     "Which website types do you build?":
       "Jenis website apa saja yang Anda buat?",
     "Company profile, catalog, news and blog, and landing page websites. If you need something different, tell us and we will find the right fit.":
@@ -170,7 +170,7 @@ window.MKC_I18N = {
     "Do I own the design and content?":
       "Apakah saya memiliki desain dan kontennya?",
     "Ownership terms are written in your estimate before we start, so everything is clear from day one.":
-      "Ketentuan kepemilikan dituliskan dalam estimasi Anda sebelum kami mulai, sehingga semuanya jelas sejak hari pertama.",
+      "Ketentuan kepemilikan dituliskan dalam Penawaran Anda sebelum kami mulai, sehingga semuanya jelas sejak hari pertama.",
     "How long until my website is ready?": "Berapa lama website saya selesai?",
     "It depends on the scope and how quickly your content is ready. You get a clear timeline with your estimate.":
       "Tergantung cakupan dan seberapa cepat konten Anda siap. Anda mendapat jadwal yang jelas bersama estimasi.",
@@ -275,7 +275,7 @@ window.MKC_I18N = {
       "Cakupan dan fitur disesuaikan dengan Anda",
     "Support as your needs grow": "Dukungan seiring kebutuhan Anda tumbuh",
     "One clear estimate before we start":
-      "Satu estimasi yang jelas sebelum kami mulai",
+      "Satu penawaran yang jelas sebelum kami mulai",
     "Case studies": "Studi kasus",
     "Work we are proud of.": "Karya yang kami banggakan.",
     "Visit website ↗": "Kunjungi website ↗",
