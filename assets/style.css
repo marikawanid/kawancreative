@@ -2461,3 +2461,560 @@ section[id] {
     transition: none;
   }
 }
+
+/* =========================================================
+   How We Work: Contextual UI Mockups (Steps 01 - 04)
+   ========================================================= */
+.hw-bar-title {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.03em;
+}
+.hw-body {
+  background: #f8fafc;
+  padding: 4.5% !important;
+  justify-content: center;
+  font-size: 10px;
+  color: #1e293b;
+}
+
+/* Step 01: We listen (Chat & Brief Checklist) */
+.hw-listen {
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4% !important;
+  align-items: stretch;
+}
+.hw-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.hw-bubble {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+.hw-label {
+  display: block;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  opacity: 0.75;
+}
+.hw-bubble--client {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  border-bottom-left-radius: 2px;
+}
+.hw-bubble--mkc {
+  background: #1684ad;
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+.hw-checklist {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hw-check-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 3px;
+}
+.hw-check-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8.5px;
+  font-weight: 500;
+  color: #475569;
+}
+.hw-check-item span {
+  display: inline-grid;
+  place-items: center;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #e0f2fe;
+  color: #0f6182;
+  font-size: 7px;
+  font-weight: 800;
+}
+.hw-check-badge {
+  margin-top: 2px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 8px;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Step 02: We design (Color Swatches, Typography & Mobile-First Artboard) */
+.hw-design {
+  display: grid !important;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 4.5% !important;
+  align-items: stretch;
+}
+.hw-tokens {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hw-swatches {
+  display: flex;
+  gap: 4px;
+}
+.hw-swatches span {
+  flex: 1;
+  height: 16px;
+  border-radius: 4px;
+}
+.hw-type {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 4px 6px;
+  border-radius: 5px;
+}
+.hw-type strong {
+  font-size: 13px;
+  color: #0f172a;
+}
+.hw-type span {
+  font-size: 8px;
+  color: #64748b;
+}
+.hw-badge-sm {
+  background: #e0f2fe;
+  color: #0f6182;
+  font-size: 8px;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.hw-artboards {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.hw-art-desktop {
+  flex: 1;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hw-art-hero {
+  flex: 1;
+  background: linear-gradient(135deg, #1684ad, #5cc8ee);
+  border-radius: 4px;
+}
+.hw-art-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  height: 28%;
+}
+.hw-art-row span {
+  background: #e2e8f0;
+  border-radius: 3px;
+}
+.hw-art-mobile {
+  width: 34%;
+  height: 92%;
+  background: #fff;
+  border: 2px solid #0f172a;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: -4px 4px 10px rgba(15, 23, 42, 0.12);
+}
+.hw-art-notch {
+  width: 40%;
+  height: 2px;
+  background: #cbd5e1;
+  margin: 0 auto 1px;
+  border-radius: 2px;
+}
+
+/* Step 03: We build (Code Editor & 99 Speed Gauge) */
+.hw-build {
+  display: grid !important;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 4.5% !important;
+  align-items: stretch;
+}
+.hw-code {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 9px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 8.5px;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hw-code-line.indent {
+  padding-left: 8px;
+}
+.hw-code-line.indent-2 {
+  padding-left: 16px;
+}
+.c-tag { color: #38bdf8; }
+.c-attr { color: #a5f3fc; }
+.c-str { color: #fde047; }
+.c-ok { color: #4ade80; font-style: italic; }
+
+.hw-speed {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hw-gauge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f0fdf4;
+  border: 3px solid #22c55e;
+  color: #15803d;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.hw-speed-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.hw-speed-sub {
+  font-size: 7.5px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Step 04: We launch (Live URL Bar, Verified Banner & Support Status) */
+.hw-url-bar {
+  margin-left: 6px;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 1px 8px;
+  font-size: 8px;
+  font-weight: 600;
+  color: #334155;
+}
+.hw-live-pill {
+  margin-left: auto;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 7.5px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 99px;
+}
+.hw-launch {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px !important;
+}
+.hw-launch-card {
+  background: #fff;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 7px 9px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hw-launch-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex: none;
+}
+.hw-launch-info {
+  display: flex;
+  flex-direction: column;
+}
+.hw-launch-info strong {
+  font-size: 9.5px;
+  color: #0f172a;
+}
+.hw-launch-info span {
+  font-size: 8px;
+  color: #64748b;
+}
+.hw-launch-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.hw-stat-box {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 5px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hw-stat-val {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0f6182;
+}
+.hw-stat-lbl {
+  font-size: 7.5px;
+  color: #64748b;
+}
+
+/* =========================================================
+   How We Work: Interactive & Looping Animations (Steps 01 - 04)
+   ========================================================= */
+
+/* Efek Hover Umum pada Mockup di How We Work */
+.stack-card__visual .mk {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+}
+.stack-card__visual .mk:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 32px 64px -20px rgba(11, 52, 71, 0.45);
+}
+
+/* ---------------------------------------------------------
+   STEP 01: Live Chat & Sequential Checklist Animation
+   --------------------------------------------------------- */
+.hw-bubble--client {
+  animation: hw-chat-client 6s infinite ease-out;
+  transform-origin: bottom left;
+}
+.hw-bubble--mkc {
+  animation: hw-chat-mkc 6s infinite ease-out;
+  transform-origin: bottom right;
+}
+.hw-checklist .hw-check-item:nth-of-type(2) {
+  animation: hw-check-1 6s infinite ease-out;
+}
+.hw-checklist .hw-check-item:nth-of-type(3) {
+  animation: hw-check-2 6s infinite ease-out;
+}
+.hw-checklist .hw-check-item:nth-of-type(4) {
+  animation: hw-check-3 6s infinite ease-out;
+}
+.hw-check-badge {
+  animation: hw-check-badge 6s infinite ease-out;
+}
+
+@keyframes hw-chat-client {
+  0%, 5% { opacity: 0; transform: translateY(8px) scale(0.92); }
+  12%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+  95%, 100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
+}
+@keyframes hw-chat-mkc {
+  0%, 22% { opacity: 0; transform: translateY(8px) scale(0.92); }
+  30%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+  95%, 100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
+}
+@keyframes hw-check-1 {
+  0%, 32% { opacity: 0.25; transform: translateX(-4px); }
+  40%, 88% { opacity: 1; transform: translateX(0); }
+  95%, 100% { opacity: 0.25; }
+}
+@keyframes hw-check-2 {
+  0%, 44% { opacity: 0.25; transform: translateX(-4px); }
+  52%, 88% { opacity: 1; transform: translateX(0); }
+  95%, 100% { opacity: 0.25; }
+}
+@keyframes hw-check-3 {
+  0%, 56% { opacity: 0.25; transform: translateX(-4px); }
+  64%, 88% { opacity: 1; transform: translateX(0); }
+  95%, 100% { opacity: 0.25; }
+}
+@keyframes hw-check-badge {
+  0%, 66% { opacity: 0; transform: scale(0.85); }
+  74%, 88% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.9); }
+}
+
+/* ---------------------------------------------------------
+   STEP 02: UI Design Swatches & Floating Mobile Artboard
+   --------------------------------------------------------- */
+.hw-swatches span:nth-child(1) { animation: hw-swatch-pop 4.5s infinite 0s ease-in-out; }
+.hw-swatches span:nth-child(2) { animation: hw-swatch-pop 4.5s infinite 1.5s ease-in-out; }
+.hw-swatches span:nth-child(3) { animation: hw-swatch-pop 4.5s infinite 3s ease-in-out; }
+
+.hw-art-hero {
+  background-size: 200% 200%;
+  animation: hw-gradient-shift 4.5s infinite alternate ease-in-out;
+}
+.hw-art-mobile {
+  animation: hw-phone-float 3.5s infinite ease-in-out;
+}
+.hw-badge-sm {
+  animation: hw-badge-pulse 3s infinite ease-in-out;
+}
+
+@keyframes hw-swatch-pop {
+  0%, 100% { transform: scale(1); box-shadow: none; }
+  20% { transform: scale(1.14) translateY(-2px); box-shadow: 0 4px 8px rgba(15, 97, 130, 0.3); }
+  40% { transform: scale(1); box-shadow: none; }
+}
+@keyframes hw-gradient-shift {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  100% { background-position: 100% 50%; filter: hue-rotate(18deg); }
+}
+@keyframes hw-phone-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes hw-badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); background: #bae6fd; }
+}
+
+/* ---------------------------------------------------------
+   STEP 03: Live Code Typing & Speed Score Pulse
+   --------------------------------------------------------- */
+.hw-code-line:nth-child(1) { animation: hw-code-type 5.5s infinite 0.2s both; }
+.hw-code-line:nth-child(2) { animation: hw-code-type 5.5s infinite 0.7s both; }
+.hw-code-line:nth-child(3) { animation: hw-code-type 5.5s infinite 1.2s both; }
+.hw-code-line:nth-child(4) { animation: hw-code-type 5.5s infinite 1.7s both; }
+.hw-code-line:nth-child(5) { animation: hw-code-type 5.5s infinite 2.2s both; }
+.hw-code-line:nth-child(6) { animation: hw-code-type 5.5s infinite 2.7s both; }
+
+/* Kursor ketik berkedip di ujung baris komentar hijau */
+.hw-code-line .c-ok::after {
+  content: "|";
+  margin-left: 2px;
+  font-style: normal;
+  font-weight: 700;
+  color: #38bdf8;
+  animation: hw-cursor-blink 0.8s infinite;
+}
+
+.hw-gauge {
+  animation: hw-gauge-glow 2.5s infinite ease-in-out;
+}
+
+@keyframes hw-code-type {
+  0%, 5% { opacity: 0; transform: translateX(-6px); }
+  15%, 85% { opacity: 1; transform: translateX(0); }
+  95%, 100% { opacity: 0; transform: translateX(4px); }
+}
+@keyframes hw-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes hw-gauge-glow {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.35); }
+  50% { transform: scale(1.07); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+/* ---------------------------------------------------------
+   STEP 04: Live Server Radar & Verified Card Shimmer
+   --------------------------------------------------------- */
+.hw-live-pill {
+  animation: hw-live-blink 2s infinite ease-in-out;
+}
+.hw-launch-icon {
+  animation: hw-gauge-glow 2.5s infinite ease-in-out;
+}
+.hw-launch-card {
+  position: relative;
+  overflow: hidden;
+}
+.hw-launch-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 197, 94, 0.12),
+    transparent
+  );
+  animation: hw-card-shimmer 4s infinite;
+}
+.hw-stat-box:hover {
+  border-color: #1684ad;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+@keyframes hw-live-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.3); }
+  50% { opacity: 0.65; box-shadow: 0 0 0 4px rgba(21, 128, 61, 0); }
+}
+@keyframes hw-card-shimmer {
+  0% { left: -120%; }
+  45%, 100% { left: 160%; }
+}
+
+/* Matikan animasi otomatis jika pengguna mengaktifkan mode hemat gerakan */
+@media (prefers-reduced-motion: reduce) {
+  .hw-bubble--client,
+  .hw-bubble--mkc,
+  .hw-checklist .hw-check-item,
+  .hw-check-badge,
+  .hw-swatches span,
+  .hw-art-hero,
+  .hw-art-mobile,
+  .hw-badge-sm,
+  .hw-code-line,
+  .hw-gauge,
+  .hw-live-pill,
+  .hw-launch-icon,
+  .hw-launch-card::after {
+    animation: none !important;
+  }
+}
