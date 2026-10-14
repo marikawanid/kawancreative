@@ -204,9 +204,9 @@ window.MKC_I18N = {
       "© 2026 • Mari Kawan Creative adalah Agensi Web. Hak cipta dilindungi.",
     "About us": "Tentang kami",
     "We build websites that": "Kami membangun website yang",
-    "represent you well.": "mewakili Anda dengan baik.",
+    "represent you well.": "merepresentasikan Anda dengan baik.",
     "Mari Kawan Creative is a creative studio that designs and builds clear, fast websites for businesses and institutions.":
-      "Mari Kawan Creative adalah studio kreatif yang merancang dan membangun website yang jelas dan cepat untuk bisnis dan institusi.",
+      "Mari Kawan Creative adalah studio kreatif yang merancang dan membangun website untuk bisnis dan institusi.",
     "Simple, honest and carefully made.":
       "Sederhana, jujur, dan dibuat dengan teliti.",
     "We focus on four kinds of websites: company profiles, catalogs, news sites and landing pages. By staying focused, we can make each one better.":
@@ -222,7 +222,7 @@ window.MKC_I18N = {
       "Jarak, tipografi, dan detail yang teliti, karena hal-hal kecil membentuk kepercayaan.",
     Care: "Kepedulian",
     "Fast communication, honest timelines and support after launch.":
-      "Komunikasi cepat, jadwal yang jujur, dan dukungan setelah peluncuran.",
+      "Komunikasi cepat, timeline yang cepat, dan dukungan setelah peluncuran.",
     "Pick what you need, or tell us something different. Every site is designed mobile first and built to load fast.":
       "Pilih yang Anda butuhkan, atau ceritakan sesuatu yang berbeda. Setiap situs dirancang mobile first dan dibuat agar cepat dimuat.",
     "For businesses, institutions and communities.":
