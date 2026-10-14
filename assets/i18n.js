@@ -88,7 +88,7 @@ window.MKC_I18N = {
     "One focused page with one clear message, built to turn visitors into sign-ups and inquiries.":
       "Satu halaman fokus dengan satu pesan yang jelas, dibuat untuk mengubah pengunjung menjadi pendaftar dan pertanyaan.",
     "Your idea": "Ide Anda",
-    "Custom & More": "Custom & Lainnya",
+    "Custom & More": "Pakai paket kustom",
     "Something different? We listen first, then design and build what fits your needs.":
       "Butuh sesuatu yang berbeda? Kami mendengarkan dulu, lalu merancang dan membangun yang sesuai kebutuhan Anda.",
     "Tell us your needs ›": "Sampaikan kebutuhan Anda ›",
@@ -239,7 +239,7 @@ window.MKC_I18N = {
     "For retail, furniture, crafts and more.":
       "Untuk ritel, furnitur, kerajinan, dan lainnya.",
     "A catalog works best when people can find the right item in a few taps. We organize your products into clear categories and consistent cards, so visitors can browse, compare and reach out without friction.":
-      "Katalog bekerja paling baik ketika orang bisa menemukan barang yang tepat dalam beberapa ketukan. Kami menata produk Anda dalam kategori yang jelas dan kartu yang konsisten, agar pengunjung bisa menjelajah, membandingkan, dan menghubungi tanpa hambatan.",
+      "Katalog bekerja paling baik ketika orang bisa menemukan barang yang tepat dalam beberapa klik. Kami menata produk Anda dalam kategori yang jelas dan kartu yang konsisten, agar pengunjung bisa menjelajah, membandingkan, dan menghubungi tanpa hambatan.",
     "Categories and product cards": "Kategori dan kartu produk",
     "Detail pages that help people decide":
       "Halaman detail yang membantu orang memutuskan",
@@ -258,7 +258,7 @@ window.MKC_I18N = {
       "Halaman artikel yang mudah dibagikan",
     "For courses, events and campaigns.": "Untuk kursus, acara, dan kampanye.",
     "A landing page has one job: to turn a visit into an action. We focus on one clear message, the right proof and a call to action that is easy to find, especially on mobile.":
-      "Landing page punya satu tugas: mengubah kunjungan menjadi tindakan. Kami fokus pada satu pesan yang jelas, bukti yang tepat, dan ajakan bertindak yang mudah ditemukan, terutama di ponsel.",
+      "Landing page punya satu tugas: mengonversi kunjungan menjadi penjualan. Kami fokus pada satu pesan yang jelas, bukti yang tepat, dan ajakan bertindak yang mudah ditemukan, terutama di ponsel.",
     "Strong headline and call to action":
       "Judul yang kuat dan ajakan bertindak",
     "Proof and details in the right order":
@@ -266,9 +266,9 @@ window.MKC_I18N = {
     "Built to convert on mobile": "Dibuat agar berkonversi di ponsel",
     "Sign-up or inquiry form": "Formulir pendaftaran atau pertanyaan",
     "For ideas that do not fit a box.":
-      "Untuk ide yang tidak muat dalam satu kotak.",
+      "Jika yang Anda cari tidak ada di antara 4 di atas, gunakan:",
     "Some ideas do not fit a standard type, and that is fine. We start by listening to what you need, then propose a scope and price that fits. You can start from $100 and grow from there.":
-      "Sebagian ide tidak cocok dengan jenis standar, dan itu tidak masalah. Kami mulai dengan mendengarkan kebutuhan Anda, lalu mengusulkan cakupan dan harga yang sesuai. Anda bisa mulai dari $100 dan berkembang dari sana.",
+      "Terkadang, ide-ide hebat memang tidak bisa dibatasi oleh paket standar, dan itu wajar. Kami akan mulai dengan mendengarkan kebutuhan Anda, lalu memberikan penawaran harga dan ruang lingkup pengerjaan yang paling pas. Anda bisa memulainya dengan budget dari $100.",
     "A free conversation about your needs":
       "Percakapan gratis tentang kebutuhan Anda",
     "Scope and features shaped around you":
@@ -443,7 +443,7 @@ window.MKC_I18N = {
       "Una página enfocada con un mensaje claro, creada para convertir visitas en registros y consultas.",
     "Your idea": "Tu idea",
     "Custom & More": "A medida y más",
-    "Something different? We listen first, then design and build what fits your needs.":
+    "Punya kebutuhan yang spesifik? Kami siap berdiskusi, merancang, dan mewujudkannya untuk Anda.":
       "¿Algo diferente? Primero escuchamos, luego diseñamos y construimos lo que se ajusta a tus necesidades.",
     "Tell us your needs ›": "Cuéntanos tus necesidades ›",
     Pricing: "Precios",
