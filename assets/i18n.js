@@ -26,7 +26,7 @@ window.MKC_I18N = {
     Contact: "Kontak",
     Language: "Bahasa",
     "Toggle dark mode": "Ganti mode gelap",
-    "Get a Quote": "Dapatkan Penawaran",
+    "Get a Quote": "Minta Penawaran",
     Menu: "Menu",
     Featured: "Unggulan",
     "Slider controls": "Kontrol slider",
@@ -100,7 +100,7 @@ window.MKC_I18N = {
     "Starting from": "Mulai dari",
     "about Rp 1.600.000": "sekitar Rp 1.600.000",
     "Final price depends on scope.": "Harga akhir tergantung cakupan.",
-    "Get a project estimate": "Dapatkan penawaran",
+    "Get a project estimate": "Minta estimasi proyek",
     "We reply within one business day.": "Kami membalas dalam satu hari kerja.",
     "projects showcased": "proyek ditampilkan",
     "website types": "jenis website",
@@ -162,7 +162,7 @@ window.MKC_I18N = {
       "Website kami mulai dari $100 (sekitar Rp 1.600.000). Kami tidak memakai paket tetap atau tingkatan harga. Harga akhir tergantung cakupan Anda, dan kami menyesuaikannya dengan kebutuhan Anda.",
     "Is there a monthly fee?": "Apakah ada biaya bulanan?",
     "Your estimate lists everything that is included. If you need ongoing support, hosting or updates, we can add them based on what you need.":
-      "Penawaran Anda mencantumkan semua yang termasuk. Jika Anda butuh dukungan berkelanjutan, hosting, atau pembaruan, kami bisa menambahkannya sesuai kebutuhan.",
+      "Estimasi Anda mencantumkan semua yang termasuk. Jika Anda butuh dukungan berkelanjutan, hosting, atau pembaruan, kami bisa menambahkannya sesuai kebutuhan.",
     "Which website types do you build?":
       "Jenis website apa saja yang Anda buat?",
     "Company profile, catalog, news and blog, and landing page websites. If you need something different, tell us and we will find the right fit.":
@@ -170,7 +170,7 @@ window.MKC_I18N = {
     "Do I own the design and content?":
       "Apakah saya memiliki desain dan kontennya?",
     "Ownership terms are written in your estimate before we start, so everything is clear from day one.":
-      "Ketentuan kepemilikan dituliskan dalam Penawaran Anda sebelum kami mulai, sehingga semuanya jelas sejak hari pertama.",
+      "Ketentuan kepemilikan dituliskan dalam estimasi Anda sebelum kami mulai, sehingga semuanya jelas sejak hari pertama.",
     "How long until my website is ready?": "Berapa lama website saya selesai?",
     "It depends on the scope and how quickly your content is ready. You get a clear timeline with your estimate.":
       "Tergantung cakupan dan seberapa cepat konten Anda siap. Anda mendapat jadwal yang jelas bersama estimasi.",
@@ -204,9 +204,9 @@ window.MKC_I18N = {
       "© 2026 • Mari Kawan Creative adalah Agensi Web. Hak cipta dilindungi.",
     "About us": "Tentang kami",
     "We build websites that": "Kami membangun website yang",
-    "represent you well.": "merepresentasikan Anda dengan baik.",
+    "represent you well.": "mewakili Anda dengan baik.",
     "Mari Kawan Creative is a creative studio that designs and builds clear, fast websites for businesses and institutions.":
-      "Mari Kawan Creative adalah studio kreatif yang merancang dan membangun website untuk bisnis dan institusi.",
+      "Mari Kawan Creative adalah studio kreatif yang merancang dan membangun website yang jelas dan cepat untuk bisnis dan institusi.",
     "Simple, honest and carefully made.":
       "Sederhana, jujur, dan dibuat dengan teliti.",
     "We focus on four kinds of websites: company profiles, catalogs, news sites and landing pages. By staying focused, we can make each one better.":
@@ -222,7 +222,7 @@ window.MKC_I18N = {
       "Jarak, tipografi, dan detail yang teliti, karena hal-hal kecil membentuk kepercayaan.",
     Care: "Kepedulian",
     "Fast communication, honest timelines and support after launch.":
-      "Komunikasi cepat, timeline yang cepat, dan dukungan setelah peluncuran.",
+      "Komunikasi cepat, jadwal yang jujur, dan dukungan setelah peluncuran.",
     "Pick what you need, or tell us something different. Every site is designed mobile first and built to load fast.":
       "Pilih yang Anda butuhkan, atau ceritakan sesuatu yang berbeda. Setiap situs dirancang mobile first dan dibuat agar cepat dimuat.",
     "For businesses, institutions and communities.":
@@ -275,7 +275,7 @@ window.MKC_I18N = {
       "Cakupan dan fitur disesuaikan dengan Anda",
     "Support as your needs grow": "Dukungan seiring kebutuhan Anda tumbuh",
     "One clear estimate before we start":
-      "Satu penawaran yang jelas sebelum kami mulai",
+      "Satu estimasi yang jelas sebelum kami mulai",
     "Case studies": "Studi kasus",
     "Work we are proud of.": "Karya yang kami banggakan.",
     "Visit website ↗": "Kunjungi website ↗",
@@ -299,6 +299,20 @@ window.MKC_I18N = {
     "* Terms and conditions apply.": "* Syarat dan ketentuan berlaku.",
     "Follow us for the latest updates from Mari Kawan Creative.":
       "Ikuti kami untuk kabar terbaru dari Mari Kawan Creative.",
+    "Let's build your website together.": "Mari bangun website Anda bersama-sama.",
+    "Mari Kawan Creative is a small web studio. We help businesses, institutions and creators put their work online clearly and simply.":
+      "Mari Kawan Creative adalah studio web kecil. Kami membantu bisnis, institusi, dan kreator menampilkan karyanya di web dengan jelas dan sederhana.",
+    "Where our name comes from.": "Asal usul nama kami.",
+    "“Mari kawan” is Indonesian for “come on, friends”, an invitation to do something together. That is how we want to work: with you, not just for you.":
+      "“Mari kawan” adalah ajakan untuk melakukan sesuatu bersama teman. Begitulah cara kami ingin bekerja: bersama Anda, bukan hanya untuk Anda.",
+    "The “Creative” in our name is about creativity. We enjoy finding a good way to show who you are online, whether you run a business, lead an institution or create on your own.":
+      "“Creative” pada nama kami berarti berkreativitas. Kami senang mencari cara yang tepat untuk menampilkan jati diri Anda di web, baik Anda menjalankan bisnis, memimpin institusi, maupun berkarya sendiri.",
+    "We started in 2026. We would rather show you our work and explain how we work than make big promises.":
+      "Kami mulai berdiri pada 2026. Kami lebih suka menunjukkan hasil kerja dan menjelaskan cara kerja kami daripada mengumbar janji besar.",
+    "We pay attention to small details, because they add up to how a site feels.":
+      "Kami memperhatikan detail kecil, karena detail itulah yang membentuk kesan sebuah website.",
+    "We keep you updated, tell you honestly what is realistic, and stay reachable after launch.":
+      "Kami selalu mengabari perkembangan, jujur soal apa yang realistis, dan tetap bisa dihubungi setelah website live.",
     "Previous case": "Kasus sebelumnya",
     "Next case": "Kasus berikutnya",
     "View details": "Lihat detail",
@@ -635,6 +649,20 @@ window.MKC_I18N = {
     "* Terms and conditions apply.": "* Se aplican términos y condiciones.",
     "Follow us for the latest updates from Mari Kawan Creative.":
       "Síguenos para conocer las novedades de Mari Kawan Creative.",
+    "Let's build your website together.": "Construyamos tu sitio web juntos.",
+    "Mari Kawan Creative is a small web studio. We help businesses, institutions and creators put their work online clearly and simply.":
+      "Mari Kawan Creative es un pequeño estudio web. Ayudamos a empresas, instituciones y creadores a presentar su trabajo en la web de forma clara y sencilla.",
+    "Where our name comes from.": "De dónde viene nuestro nombre.",
+    "“Mari kawan” is Indonesian for “come on, friends”, an invitation to do something together. That is how we want to work: with you, not just for you.":
+      "«Mari kawan» es una invitación, en indonesio, a hacer algo juntos entre amigos. Así queremos trabajar: contigo, no solo para ti.",
+    "The “Creative” in our name is about creativity. We enjoy finding a good way to show who you are online, whether you run a business, lead an institution or create on your own.":
+      "«Creative» en nuestro nombre habla de creatividad. Nos gusta encontrar una buena manera de mostrar quién eres en línea, ya sea que dirijas un negocio, una institución o crees por tu cuenta.",
+    "We started in 2026. We would rather show you our work and explain how we work than make big promises.":
+      "Empezamos en 2026. Preferimos mostrarte nuestro trabajo y explicarte cómo trabajamos antes que hacer grandes promesas.",
+    "We pay attention to small details, because they add up to how a site feels.":
+      "Cuidamos los pequeños detalles, porque son los que dan forma a cómo se siente un sitio.",
+    "We keep you updated, tell you honestly what is realistic, and stay reachable after launch.":
+      "Te mantenemos al tanto, te decimos con honestidad qué es realista y seguimos disponibles después del lanzamiento.",
     "Previous case": "Caso anterior",
     "Next case": "Caso siguiente",
     "View details": "Ver detalles",
