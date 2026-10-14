@@ -1280,6 +1280,15 @@ a {
   border-radius: 50%;
   background: #cbd5e1;
 }
+.mk-bar i:nth-child(1) {
+  background: #ff5f56; /* Merah - Close */
+}
+.mk-bar i:nth-child(2) {
+  background: #ffbd2e; /* Kuning - Minimize */
+}
+.mk-bar i:nth-child(3) {
+  background: #27c93f; /* Hijau - Maximize */
+}
 .mk .mk-body {
   height: calc(100% - 17px); /* Disesuaikan dari 31px (5px + 5px + 6px + 1px border = 17px) */
 }
