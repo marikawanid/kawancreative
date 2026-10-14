@@ -1152,6 +1152,7 @@ a {
   background: var(--c-navy);
   color: #e5e7eb;
 }
+
 .footer-grid {
   display: grid;
   gap: 2.5rem;
@@ -1159,10 +1160,15 @@ a {
 }
 @media (min-width: 768px) {
   .footer-grid {
-    grid-template-columns: 1.3fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: clamp(3rem, 7vw, 6rem);  /* Jarak panah merah kiri */
+    padding-right: clamp(2.5rem, 6vw, 6.25rem); /* Jarak panah merah kanan (dibuat sedikit lebih kecil agar pas sampai tepi layar) */
     gap: 2rem;
   }
 }
+
 .footer-title {
   display: inline-block;
   margin-bottom: 1.5rem;
