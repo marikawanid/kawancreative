@@ -500,7 +500,33 @@
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
     </button>
-    <script src="assets/i18n.js"></script>
+<script src="assets/i18n.js"></script>
     <script src="assets/main.js"></script>
+    <script>
+      (function () {
+        const gauge = document.querySelector(".hw-gauge");
+        if (!gauge) return;
+        const cycle = 5500; // 5.5 detik (sinkron dengan animasi ketik kode)
+        const countDuration = 2800; // waktu menghitung dari 0 ke 99 (2.8 detik)
+        let start = performance.now();
+
+        function update(now) {
+          const elapsed = (now - start) % cycle;
+          if (elapsed < 400) {
+            gauge.textContent = "0";
+          } else if (elapsed < 400 + countDuration) {
+            const progress = (elapsed - 400) / countDuration;
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            gauge.textContent = Math.min(99, Math.floor(easeOut * 100));
+          } else if (elapsed < 5100) {
+            gauge.textContent = "99";
+          } else {
+            gauge.textContent = "0";
+          }
+          requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      })();
+    </script>
   </body>
 </html>
