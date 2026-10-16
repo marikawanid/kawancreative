@@ -1,3049 +1,1362 @@
-/* =========================================================
-   Mari Kawan Creative: design system
-   ========================================================= */
-
-/* 1. Tokens ------------------------------------------------ */
-:root {
-  /* Brand colors */
-  --c-blue: #1684ad;
-  --c-dark: #0f6182;
-  --c-lightblue: #e0f2fe;
-  --c-light: #f8fafc;
-  --c-ink: #1d1d1f;
-  --c-muted: #4b5563;
-  --c-accent: #0f6182; /* accent used for text (lighter in dark mode) */
-  --bg: #fff;
-  --surface: #fff;
-  --line: rgba(0, 0, 0, 0.08);
-  --line-strong: #cbd5e1;
-  --header-bg: rgba(255, 255, 255, 0.82);
-  --hero-from: #e6f4fa;
-  --hero-tint: rgba(224, 242, 254, 0.6);
-  --tint-1: #f1f9fe;
-  --tint-2: #e0f2fe;
-  --tint-3: #cfeaf9;
-  --tint-4: #bde0f3;
-  --c-navy: #0b3447; /* deep navy derived from the brand dark blue (footer) */
-  --c-cyan: #5cc8ee; /* accent on dark navy (footer) */
-  --c-navy-light: #14607f; /* lighter tone of the footer color (CTA box) */
-
-  /* Font */
-  --font:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Type scale: PHI typography standard (mobile values; desktop below) */
-  --fs-h1: 32px; /* H1 / hero title (display, h1, h2 classes) */
-  --fw-h1: 850;
-  --fs-h2: 16px; /* hero subtitle (.t-lead) */
-  --fw-h2: 750;
-  --fs-h3: 16px; /* column / card / footer title */
-  --fw-h3: 600;
-  --fs-overline: 11px; /* labels and categories, uppercase */
-  --fw-overline: 800;
-  --fs-body: 13.5px; /* paragraphs */
-  --fs-ui: 14px; /* menu, links, buttons, form inputs */
-  --fs-meta: 11px; /* breadcrumb, badges, meta info */
-  --fs-caption: 11px; /* small subtitle, copyright */
-  --fs-number: 36px; /* big stat and step numbers */
-
-  /* Layout */
-  --nav-h: 4rem;
-  --container: 80rem;
-  --gutter: clamp(1.25rem, 4vw, 2rem);
-  --radius-card: 1.75rem;
-  --section-y: clamp(3rem, 2rem + 4vw, 5.5rem);
-}
-@media (min-width: 768px) {
-  :root {
-    --nav-h: 4.75rem;
-    --fs-h1: clamp(36px, 4vw, 42px);
-    --fs-h2: 19px;
-    --fs-overline: 13px;
-    --fs-body: 15px;
-    --fs-meta: 13px;
-    --fs-caption: 12px;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-h);
-}
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--c-ink);
-  font-size: var(--fs-body);
-  line-height: 1.6;
-}
-[hidden] {
-  display: none !important;
-}
-:focus-visible {
-  outline: 2px solid var(--c-dark);
-  outline-offset: 3px;
-}
-
-/* 2. Typography -------------------------------------------- */
-/* Display, h1 and h2 share the H1 standard */
-.t-display,
-.t-h1,
-.t-h2 {
-  color: var(--c-ink);
-  font-size: var(--fs-h1);
-  font-weight: var(--fw-h1);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-.t-h3 {
-  color: var(--c-ink);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-h3);
-  line-height: 1.35;
-}
-.t-lead {
-  font-size: var(--fs-h2);
-  font-weight: var(--fw-h2);
-  line-height: 1.45;
-  color: var(--c-muted);
-  text-wrap: pretty;
-}
-.t-body {
-  font-size: var(--fs-body);
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--c-muted);
-  text-wrap: pretty;
-}
-.t-small {
-  font-size: var(--fs-meta);
-  line-height: 1.5;
-  color: var(--c-muted);
-}
-.t-eyebrow {
-  font-size: var(--fs-overline);
-  font-weight: var(--fw-overline);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c-accent);
-}
-
-/* Vertical rhythm: space between stacked text elements */
-.t-eyebrow + * {
-  margin-top: 0.75rem;
-}
-.t-display + .t-lead,
-.t-h1 + .t-lead,
-.t-h2 + .t-lead,
-.t-h3 + .t-body {
-  margin-top: 1rem;
-}
-.t-lead + .actions,
-.t-lead + p,
-.t-lead + ul {
-  margin-top: 2rem;
-}
-
-/* Text on dark backgrounds */
-.on-dark,
-.on-dark .t-display,
-.on-dark .t-h1,
-.on-dark .t-h2,
-.on-dark .t-h3 {
-  color: #fff;
-}
-.on-dark .t-lead,
-.on-dark .t-body,
-.on-dark .t-small {
-  color: rgba(255, 255, 255, 0.74);
-}
-.on-dark .t-eyebrow {
-  color: #7cc7e6;
-}
-
-.link {
-  color: var(--c-accent);
-  font-size: var(--fs-ui);
-  font-weight: 500;
-}
-.link:hover {
-  text-decoration: underline;
-}
-.on-dark .link {
-  color: #7cc7e6;
-}
-
-/* 3. Layout ------------------------------------------------ */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-.container {
-  width: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-.section {
-  padding-block: var(--section-y);
-}
-.section-sm {
-  padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem);
-}
-.section-alt {
-  background: var(--c-light);
-}
-.section-head {
-  max-width: 48rem;
-}
-.section-head.is-center {
-  margin-inline: auto;
-  text-align: center;
-}
-.section-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.grid-2,
-.grid-3,
-.grid-4 {
-  display: grid;
-  gap: 1rem;
-}
-@media (min-width: 640px) {
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 768px) {
-  .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-}
-@media (min-width: 1024px) {
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-}
-.grid-2--wide {
-  gap: 2.5rem;
-}
-@media (min-width: 768px) {
-  .grid-2--wide {
-    gap: 4rem;
-  }
-}
-.stack-text > * + * {
-  margin-top: 1.25rem;
-}
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem 1.5rem;
-}
-.hide-sm {
-  display: none;
-}
-@media (min-width: 768px) {
-  .hide-sm {
-    display: inline;
-  }
-}
-
-/* 4. Buttons ----------------------------------------------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.7rem 1.5rem;
-  border-radius: 999px;
-  font-size: var(--fs-ui);
-  font-weight: 500;
-  line-height: 1.2;
-  cursor: pointer;
-  border: 1.5px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-}
-.btn-primary {
-  background: var(--c-dark);
-  color: #fff;
-}
-.btn-primary:hover {
-  background: var(--c-blue);
-}
-.btn-light {
-  background: #fff;
-  color: #0f172a;
-}
-.btn-light:hover {
-  background: var(--c-lightblue);
-}
-.btn-outline-light {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-.btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-.btn-sm {
-  min-height: 2.25rem;
-  padding: 0.4rem 1rem;
-}
-
-/* 5. Header ------------------------------------------------ */
-.site-header {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 50;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--line);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-}
-.site-header__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  height: var(--nav-h);
-}
-.site-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 600;
-}
-.brand__mark {
-  display: grid;
-  place-items: center;
-  height: 2.5rem;
-  min-width: 3rem;
-  padding-inline: 0.5rem;
-  border-radius: 0.75rem;
-  background: var(--c-blue);
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-.brand__logo {
-  height: 2.5rem;
-  width: auto;
-} /* use for the real logo image */
-.brand__name {
-  display: none;
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-h3);
-}
-@media (min-width: 640px) {
-  .brand__name {
-    display: block;
-  }
-}
-.site-nav {
-  display: none;
-  gap: 2rem;
-  font-size: var(--fs-ui);
-  color: var(--c-muted);
-}
-.site-nav a:hover {
-  color: var(--c-ink);
-}
-.site-nav a[aria-current="page"] {
-  color: var(--c-ink);
-  font-weight: 600;
-}
-@media (min-width: 768px) {
-  .site-nav {
-    display: flex;
-  }
-}
-.menu-btn {
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-}
-.mobile-menu {
-  padding: 0.5rem var(--gutter) 1.5rem;
-  background: var(--surface);
-  border-top: 1px solid var(--line);
-}
-.mobile-menu a {
-  display: block;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--line);
-  font-size: var(--fs-ui);
-  font-weight: 500;
-}
-@media (min-width: 768px) {
-  .menu-btn,
-  .mobile-menu {
-    display: none !important;
-  }
-}
-
-/* 6. Hero slider ------------------------------------------- */
-.slider {
-  position: relative;
-}
-.slider-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-.slider-track::-webkit-scrollbar {
-  display: none;
-}
-.slide {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: calc(var(--nav-h) + 2rem) 0 6.5rem;
-}
-.slide-light {
-  background: linear-gradient(180deg, var(--hero-from), var(--bg));
-}
-.slide-inner {
-  display: grid;
-  gap: 2.5rem;
-  align-items: center;
-}
-@media (min-width: 1024px) {
-  .slide-inner {
-    grid-template-columns: 1fr 1.15fr;
-    gap: 4rem;
-  }
-}
-.slide-copy,
-.slide-visual {
-  min-width: 0;
-}
-.slide-visual {
-  position: relative;
-}
-.js .slide .slide-copy,
-.js .slide .slide-visual {
-  transition:
-    opacity 0.8s ease,
-    translate 0.8s ease;
-}
-.js .slide:not(.is-active) .slide-copy,
-.js .slide:not(.is-active) .slide-visual {
-  opacity: 0;
-  translate: 0 18px;
-}
-
-.float-phone {
-  position: absolute;
-  right: 0.5rem;
-  bottom: -1.25rem;
-  width: 22%;
-  max-width: 9rem;
-}
-.tile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-.tile {
-  margin: 0;
-}
-.tile figcaption {
-  margin-top: 0.5rem;
-  text-align: center;
-}
-.stack {
-  position: relative;
-  padding-bottom: 2.5rem;
-}
-.stack > :first-child {
-  width: 80%;
-}
-.stack > :last-child {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 62%;
-}
-.phone-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 1rem;
-}
-.phone-row .phn {
-  width: min(28%, 9rem);
-}
-.phone-row .phn:nth-child(2) {
-  translate: 0 -1.5rem;
-}
-
-.slider-ui {
-  position: absolute;
-  left: 50%;
-  bottom: 1.5rem;
-  translate: -50% 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(17, 24, 39, 0.78);
-  color: #fff;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-.slider-btn {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  color: #fff;
-}
-.slider-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-.slider-dots {
-  display: flex;
-  align-items: center;
-}
-.dot-btn {
-  padding: 0.9rem 0.25rem;
-}
-.dot {
-  position: relative;
-  display: block;
-  width: 0.5rem;
-  height: 0.5rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.4);
-  transition: width 0.3s;
-}
-.dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #fff;
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.dot-btn.is-active .dot {
-  width: 2.5rem;
-}
-.dot-btn.is-active .dot::after {
-  animation: dot-fill var(--slide-ms, 6000ms) linear forwards;
-}
-.slider.is-held .dot-btn.is-active .dot::after {
-  animation-play-state: paused;
-}
-.slider.is-paused .dot-btn.is-active .dot::after {
-  animation: none;
-  transform: scaleX(1);
-}
-.slider .i-play,
-.slider.is-paused .i-pause {
-  display: none;
-}
-.slider.is-paused .i-play {
-  display: block;
-}
-@keyframes dot-fill {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-/* 7. Cards ------------------------------------------------- */
-.card {
-  display: block;
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-.card-light {
-  background: var(--c-light);
-}
-.card-blue {
-  background: var(--c-lightblue);
-}
-.card-dark {
-  background: #171a1c;
-}
-.card-brand {
-  background: var(--c-dark);
-}
-.step-num {
-  margin-bottom: 1.25rem;
-  font-size: var(--fs-number);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--c-blue);
-}
-.section-alt .card {
-  background: var(--surface);
-}
-
-.work-card {
-  display: block;
-  padding: 1.25rem;
-  border-radius: var(--radius-card);
-  background: var(--c-light);
-  transition:
-    translate 0.3s,
-    box-shadow 0.3s;
-}
-.work-card:hover {
-  translate: 0 -4px;
-  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.3);
-}
-.work-media {
-  overflow: hidden;
-  padding: 1.25rem 1.25rem 0;
-  border-radius: 1rem;
-  background: var(--c-lightblue);
-}
-.work-media .mk {
-  translate: 0 1rem;
-}
-.work-tag {
-  margin: 1.25rem 0 0.25rem;
-  font-size: var(--fs-overline);
-  font-weight: var(--fw-overline);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c-accent);
-}
-.work-card .link {
-  display: inline-block;
-  margin-top: 0.75rem;
-}
-
-.rail {
-  display: flex;
-  gap: 1rem;
-  margin-inline: calc(var(--gutter) * -1);
-  padding-inline: var(--gutter);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.rail::-webkit-scrollbar {
-  display: none;
-}
-.rail > * {
-  flex: 0 0 82%;
-  scroll-snap-align: center;
-}
-@media (min-width: 768px) {
-  .rail {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-inline: 0;
-    padding-inline: 0;
-    overflow: visible;
-  }
-}
-
-.social-icon {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1rem;
-  border-radius: 50%;
-  background: var(--c-dark);
-  color: #fff;
-  transition: background 0.2s;
-}
-.social-icon:hover {
-  background: var(--c-blue);
-}
-.social-icon svg {
-  width: 1.4rem;
-  height: 1.4rem;
-}
-.social-row {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-.social-row .social-icon {
-  margin-bottom: 0;
-}
-
-/* 8. Sections ---------------------------------------------- */
-.page-hero {
-  padding: calc(var(--nav-h) + 3rem) 0 clamp(3rem, 6vw, 5rem);
-  text-align: center;
-  background: linear-gradient(180deg, var(--hero-tint), var(--bg));
-}
-.page-hero .t-lead {
-  max-width: 42rem;
-  margin-inline: auto;
-}
-.page-hero .actions,
-.page-hero p.rv:last-of-type {
-  justify-content: center;
-}
-.feature {
-  display: grid;
-  gap: 2.5rem;
-  align-items: center;
-}
-@media (min-width: 768px) {
-  .feature {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-  .feature--flip > :first-child {
-    order: 2;
-  }
-}
-.check-list {
-  display: grid;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-  color: var(--c-ink);
-}
-.check-list li {
-  display: flex;
-  gap: 0.75rem;
-}
-.check-list li::before {
-  content: "";
-  flex: none;
-  width: 0.4rem;
-  height: 0.4rem;
-  margin-top: 0.6rem;
-  border-radius: 50%;
-  background: var(--c-blue);
-}
-.chip.is-active {
-  background: var(--c-ink);
-  color: #fff;
-}
-
-/* 8b. Equal-height card row (What we build) ----------------- */
-.grid-5 {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-}
-@media (min-width: 1200px) {
-  .grid-5 {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.25rem;
-  }
-}
-.grid-5 > .rv {
-  display: flex;
-}
-.grid-5 .work-card {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-.grid-5 .work-card .link {
-  margin-top: auto;
-  padding-top: 0.75rem;
-}
-
-/* 8c. Pricing ------------------------------------------------ */
-.price-box {
-  display: grid;
-  gap: 2rem;
-  padding: clamp(1.5rem, 1rem + 3vw, 3.5rem);
-  border-radius: var(--radius-card);
-  background: var(--c-lightblue);
-}
-@media (min-width: 900px) {
-  .price-box {
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: center;
-    gap: 3rem;
-  }
-}
-.price-card {
-  padding: clamp(1.5rem, 1rem + 2vw, 2.25rem);
-  border-radius: 1.5rem;
-  background: var(--surface);
-}
-.price-amount {
-  margin: 0.25rem 0;
-  font-size: var(--fs-h1);
-  font-weight: var(--fw-h1);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--c-ink);
-}
-.price-card .btn {
-  width: 100%;
-  margin: 1.25rem 0 0.75rem;
-}
-
-/* 8d. How we work: stacked cards that reveal on scroll ------- */
-.stack-cards {
-  display: block;
-  margin-top: 3rem;
-  padding: 0;
-  list-style: none;
-}
-.stack-card {
-  position: sticky;
-  top: calc(var(--nav-h) + 1rem + var(--i) * 3.5rem);
-}
-.stack-card + .stack-card {
-  margin-top: 1.25rem;
-}
-@media (min-width: 768px) {
-  .stack-card {
-    top: calc(var(--nav-h) + 1.5rem + var(--i) * 4.5rem);
-  }
-}
-.stack-card__inner {
-  --p: 0;
-  display: grid;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
-  border: 1px solid rgba(15, 97, 130, 0.14);
-  border-radius: var(--radius-card);
-  box-shadow: 0 -10px 30px -18px rgba(11, 52, 71, 0.35);
-  transform-origin: top center;
-  scale: calc(1 - var(--p) * 0.05);
-}
-.tint-1 {
-  background: var(--tint-1);
-}
-.tint-2 {
-  background: var(--tint-2);
-}
-.tint-3 {
-  background: var(--tint-3);
-}
-.tint-4 {
-  background: var(--tint-4);
-}
-.stack-card__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.stack-card__num {
-  font-size: var(--fs-ui);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  color: var(--c-accent);
-}
-.stack-card__body {
-  display: grid;
-  gap: 1.5rem;
-  align-items: start;
-}
-@media (min-width: 900px) {
-  .stack-card__body {
-    grid-template-columns: 1fr 0.8fr 1.1fr;
-    gap: 2rem;
-  }
-}
-.stack-card__tags {
-  display: grid;
-  gap: 0.5rem;
-  font-size: var(--fs-overline);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c-accent);
-}
-.stack-card__visual {
-  min-width: 0;
-}
-
-/* 8e. FAQ ----------------------------------------------------- */
-.faq {
-  display: grid;
-  gap: 2rem;
-}
-@media (min-width: 900px) {
-  .faq {
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
-  }
-  .faq__head {
-    position: sticky;
-    top: calc(var(--nav-h) + 2rem);
-    align-self: start;
-  }
-}
-.faq__item {
-  border-bottom: 1px solid var(--line);
-}
-.faq__item:first-child {
-  border-top: 1px solid var(--line);
-}
-.faq__item summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.15rem 0;
-  cursor: pointer;
-  list-style: none;
-  color: var(--c-ink);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-h3);
-}
-.faq__item summary::-webkit-details-marker {
-  display: none;
-}
-.faq__icon {
-  position: relative;
-  flex: none;
-  width: 1rem;
-  height: 1rem;
-}
-.faq__icon::before,
-.faq__icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  height: 1.5px;
-  background: currentColor;
-  transition: rotate 0.3s;
-}
-.faq__icon::after {
-  rotate: 90deg;
-}
-.faq__item[open] .faq__icon::after {
-  rotate: 0deg;
-}
-.faq__item p {
-  max-width: 40rem;
-  padding-bottom: 1.25rem;
-}
-.faq__item[open] p {
-  animation: faq-in 0.3s ease;
-}
-@keyframes faq-in {
-  from {
-    opacity: 0;
-    translate: 0 -6px;
-  }
-}
-
-/* 8f. Social bar ---------------------------------------------- */
-.social-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem 2rem;
-  padding: clamp(1.25rem, 1rem + 1.5vw, 2rem) clamp(1.25rem, 1rem + 2vw, 2.5rem);
-  border-radius: var(--radius-card);
-  background: var(--c-light);
-}
-.social-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-.social-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 1rem 0.55rem 0.55rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: var(--fs-ui);
-  font-weight: 500;
-  transition:
-    background 0.25s,
-    color 0.25s,
-    translate 0.25s,
-    box-shadow 0.25s;
-}
-.social-pill__icon {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: var(--c-dark);
-  color: #fff;
-  transition:
-    rotate 0.35s,
-    background 0.25s,
-    color 0.25s;
-}
-.social-pill__icon svg {
-  width: 1rem;
-  height: 1rem;
-}
-.social-pill__arrow {
-  max-width: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition:
-    max-width 0.3s,
-    opacity 0.3s;
-}
-.social-pill:hover {
-  translate: 0 -2px;
-  background: var(--c-dark);
-  color: #fff;
-  box-shadow: 0 10px 20px -12px rgba(11, 52, 71, 0.5);
-}
-.social-pill:hover .social-pill__icon {
-  rotate: -12deg;
-  background: #fff;
-  color: var(--c-dark);
-}
-.social-pill:hover .social-pill__arrow {
-  max-width: 1.5rem;
-  opacity: 1;
-}
-
-/* 8h. Case study slider ----------------------------------------- */
-.cs {
-  overflow: hidden;
-  padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem);
-  background: var(--c-navy);
-}
-.cs-track {
-  --cs-w: 84vw;
-  position: relative;
-  display: flex;
-  gap: 1rem;
-  padding-inline: calc((100% - var(--cs-w)) / 2);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-@media (min-width: 900px) {
-  .cs-track {
-    --cs-w: min(64vw, 62rem);
-    gap: 1.5rem;
-  }
-}
-.cs-track::-webkit-scrollbar {
-  display: none;
-}
-.cs-slide {
-  flex: 0 0 var(--cs-w);
-  scroll-snap-align: center;
-  opacity: 0.4;
-  scale: 0.92;
-  cursor: pointer;
-  transition:
-    opacity 0.4s ease,
-    scale 0.4s ease;
-}
-.cs-slide.is-active {
-  opacity: 1;
-  scale: 1;
-  cursor: default;
-}
-.cs-media {
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  padding: 7%;
-  border-radius: 1.25rem;
-  background: linear-gradient(135deg, var(--a), #0b3447);
-}
-.cs-media .mk {
-  width: 88%;
-}
-.cs-phone {
-  position: absolute;
-  right: 5%;
-  bottom: -6%;
-  width: 15%;
-}
-.cs-fill {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} /* real image or video */
-.cs-info {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.cs-info__text {
-  max-width: 34rem;
-  transition: opacity 0.18s;
-}
-.cs-info__text.is-swap {
-  opacity: 0;
-}
-.cs-info__text .btn {
-  margin-top: 1.25rem;
-}
-.cs-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.cs-arrow {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  color: #fff;
-  transition:
-    background 0.2s,
-    border-color 0.2s;
-}
-.cs-arrow:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* 9. Footer ------------------------------------------------ */
-.site-footer {
-  padding-top: clamp(3rem, 6vw, 5rem);
-  background: var(--c-navy);
-  color: #e5e7eb;
-}
-
-.footer-grid {
-  display: grid;
-  gap: 2.5rem;
-  padding-bottom: 3rem;
-}
-@media (min-width: 768px) {
-  .footer-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-left: clamp(3rem, 7vw, 6rem);  /* Jarak panah merah kiri */
-    padding-right: clamp(2.5rem, 6vw, 6.25rem); /* Jarak panah merah kanan (dibuat sedikit lebih kecil agar pas sampai tepi layar) */
-    gap: 2rem;
-  }
-}
-
-.footer-title {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--c-cyan);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-h3);
-}
-.footer-text {
-  margin-bottom: 0.75rem;
-  font-size: var(--fs-body);
-  font-style: normal;
-  line-height: 1.6;
-}
-.footer-tel {
-  margin-top: 1.25rem;
-  font-size: var(--fs-h2);
-  font-weight: var(--fw-h2);
-  line-height: 1.3;
-  color: #fff;
-}
-.footer-hours {
-  margin-top: 0.5rem;
-  font-size: var(--fs-caption);
-  color: #9db4c0;
-}
-.footer-list {
-  display: grid;
-  gap: 0.75rem;
-  font-size: var(--fs-ui);
-}
-.footer-list a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-.brand--footer .brand__name {
-  display: block;
-  color: #fff;
-}
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 2rem;
-  font-size: var(--fs-caption);
-  color: #9db4c0;
-}
-
-/* 10. Forms ------------------------------------------------ */
-.field {
-  display: block;
-  margin-bottom: 1rem;
-  font-size: var(--fs-ui);
-  font-weight: 500;
-  color: var(--c-ink);
-}
-.field input,
-.field select,
-.field textarea {
-  display: block;
-  width: 100%;
-  margin-top: 0.35rem;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 0.75rem;
-  background: var(--surface);
-  color: var(--c-ink);
-  font: inherit;
-  font-size: var(--fs-ui);
-  font-weight: 400;
-}
-/* 16px on phones stops iOS from zooming the page when a field is focused */
-@media (max-width: 767px) {
-  .field input,
-  .field select,
-  .field textarea {
-    font-size: 16px;
-  }
-}
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--c-dark);
-  box-shadow: 0 0 0 3px rgba(15, 97, 130, 0.2);
-}
-
-/* 11. Mockups (CSS placeholders: swap for real screenshots) -- */
-.mkx {
-  --a: #1684ad;
-}
-.mk {
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  border-radius: 0.65rem; /* Diperkecil dari 1rem agar sudut melengkung pas dengan bar tipis */
-  background: #fff;
-  box-shadow:
-    0 30px 60px -25px rgba(15, 50, 70, 0.35),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
-}
-.mk-bar {
-  display: flex;
-  align-items: center;
-  gap: 4px; /* Diperkecil dari 6px */
-  padding: 5px 9px; /* Diperkecil dari 10px 12px (tinggi bar turun hampir 50%) */
-  border-bottom: 1px solid #e2e8f0;
-  background: #f1f5f9;
-}
-.mk-bar i {
-  width: 6px; /* Diperkecil dari 9px */
-  height: 6px; /* Diperkecil dari 9px */
-  border-radius: 50%;
-  background: #cbd5e1;
-}
-.mk-bar i:nth-child(1) {
-  background: #ff5f56; /* Merah - Close */
-}
-.mk-bar i:nth-child(2) {
-  background: #ffbd2e; /* Kuning - Minimize */
-}
-.mk-bar i:nth-child(3) {
-  background: #27c93f; /* Hijau - Maximize */
-}
-.mk .mk-body {
-  height: calc(100% - 17px); /* Disesuaikan dari 31px (5px + 5px + 6px + 1px border = 17px) */
-}
-.mk-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4%;
-  padding: 5%;
-}
-.mkx .l {
-  display: block;
-  height: 6px;
-  margin: 5px 0;
-  border-radius: 3px;
-  background: #e2e8f0;
-}
-.mkx .l.h {
-  height: 11px;
-  background: #0f172a;
-}
-.mkx .bt {
-  width: 22%;
-  height: 12px;
-  border-radius: 99px;
-  background: var(--a);
-}
-.mkx .bx {
-  border-radius: 8px;
-  background: #eef2f7;
-}
-.mkx .ac {
-  border-radius: 8px;
-  background: var(--a);
-  opacity: 0.85;
-}
-.mkx .row {
-  display: flex;
-  gap: 4%;
-}
-.mkx .row > * {
-  flex: 1;
-}
-.mkx .grid3 {
-  display: grid;
-  flex: 1;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4%;
-}
-.phn {
-  overflow: hidden;
-  aspect-ratio: 9 / 19;
-  border: 5px solid #0f172a;
-  border-radius: 1.6rem;
-  background: #fff;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
-}
-.phn .mk-body {
-  height: 100%;
-  padding: 9%;
-}
-
-/* 6b. Hero slider: fills the screen, glow and dot grid fill the space ---- */
-.slide {
-  position: relative;
-  overflow: hidden;
-}
-.slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      circle at 78% 32%,
-      rgba(22, 132, 173, 0.2),
-      transparent 45%
-    ),
-    radial-gradient(rgba(15, 97, 130, 0.16) 1px, transparent 1px);
-  background-size:
-    auto,
-    26px 26px;
-  -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent);
-  mask-image: linear-gradient(180deg, #000 45%, transparent);
-}
-.slide .container {
-  position: relative;
-  max-width: 90rem;
-}
-.slide-inner {
-  gap: clamp(2rem, 1rem + 3vw, 4rem);
-}
-@media (min-width: 1024px) {
-  .slide-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-  }
-}
-.slide-copy {
-  max-width: 36rem;
-}
-.slide-points {
-  display: grid;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-  color: var(--c-ink);
-  font-size: var(--fs-ui);
-  font-weight: 500;
-}
-.slide-points li {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-.slide-points li::before {
-  content: "";
-  flex: none;
-  width: 1.1rem;
-  height: 1.1rem;
-  border-radius: 50%;
-  background: var(--c-blue)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E")
-    center / 62% no-repeat;
-}
-.slide-points + .actions {
-  margin-top: 2rem;
-}
-.hero-mock {
-  position: relative;
-}
-.float-phone {
-  right: 2%;
-  width: 20%;
-  max-width: 11rem;
-}
-.float-chip {
-  position: absolute;
-  display: none;
-  padding: 0.5rem 0.9rem;
-  border-radius: 999px;
-  background: var(--surface);
-  box-shadow: 0 14px 30px -14px rgba(11, 52, 71, 0.45);
-  color: var(--c-ink);
-  font-size: var(--fs-ui);
-  font-weight: 600;
-}
-@media (min-width: 640px) {
-  .float-chip {
-    display: block;
-  }
-}
-.float-chip--a {
-  top: 14%;
-  left: -3%;
-}
-.float-chip--b {
-  bottom: -3%;
-  left: 4%;
-}
-
-/* 6c. Header tools: language switch, theme button ------------------ */
-.lang-switch {
-  display: inline-flex;
-  padding: 2px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-}
-.lang-switch button {
-  padding: 0.25rem 0.55rem;
-  border-radius: 999px;
-  color: var(--c-muted);
-  font-size: var(--fs-caption);
-  font-weight: 600;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.lang-switch button[aria-pressed="true"] {
-  background: var(--c-dark);
-  color: #fff;
-}
-.theme-btn {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--c-ink);
-  transition: background 0.2s;
-}
-.theme-btn:hover {
-  background: var(--c-light);
-}
-.theme-btn .i-sun,
-[data-theme="dark"] .theme-btn .i-moon {
-  display: none;
-}
-[data-theme="dark"] .theme-btn .i-sun {
-  display: block;
-}
-.site-header__cta {
-  display: none;
-}
-@media (min-width: 640px) {
-  .site-header__cta {
-    display: inline-flex;
-  }
-}
-.mobile-menu .mobile-menu__cta {
-  display: flex;
-  margin-top: 1rem;
-  padding: 0.7rem 1.5rem;
-  border-bottom: 0;
-  color: #fff;
-  font-size: var(--fs-ui);
-}
-
-/* 8i. Services page: feature rows ---------------------------------- */
-.feature .feature__text > * + * {
-  margin-top: 1rem;
-}
-.feature .feature__text > h2 {
-  margin-top: 0.5rem;
-}
-.feature .feature__text .check-list {
-  margin-top: 1.5rem;
-}
-.feature .feature__text .actions {
-  margin-top: 2rem;
-}
-
-/* 8j. Contact page: compact side cards ----------------------------- */
-
-/* 9b. Footer with highlighted CTA ---------------------------------- */
-.footer-about {
-  max-width: 22rem;
-  margin-top: 1rem;
-  color: #cbd5e1;
-}
-.footer-bottom {
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-/* 8h-2. Case study slider: full screen ----------------------------- */
-.cs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5rem;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding-top: calc(var(--nav-h) + 1.5rem);
-  padding-bottom: 2rem;
-}
-.cs-head .t-h1 {
-  margin-top: 0.5rem;
-}
-.cs-info {
-  width: 100%;
-  margin-top: 0;
-}
-@media (min-width: 900px) {
-  .cs-track {
-    --cs-w: max(24rem, min(64vw, 62rem, calc((100svh - 23rem) * 1.6)));
-  }
-}
-
-/* 12. Motion ----------------------------------------------- */
-.js .rv {
-  opacity: 0;
-  translate: 0 24px;
-  transition:
-    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
-    translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.js .rv.in {
-  opacity: 1;
-  translate: 0 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .slider-track,
-  .cs-track {
-    scroll-behavior: auto;
-  }
-  .cs-slide,
-  .cs-info__text {
-    transition: none;
-  }
-  .cs-slide {
-    scale: 1;
-  }
-  .stack-card__inner {
-    scale: 1 !important;
-  }
-  .js .rv,
-  .js .slide .slide-copy,
-  .js .slide .slide-visual {
-    opacity: 1 !important;
-    translate: 0 0 !important;
-    transition: none;
-  }
-}
-
-/* 13. Dark theme (button in the header; saved in the browser) ---- */
-[data-theme="dark"] {
-  color-scheme: dark;
-  --c-ink: #f1f5f9;
-  --c-muted: #a9b4c0;
-  --c-light: #101a23;
-  --c-lightblue: #0f2b3c;
-  --c-accent: #7cc7e6;
-  --bg: #0b1118;
-  --surface: #121c26;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-strong: rgba(255, 255, 255, 0.22);
-  --header-bg: rgba(11, 17, 24, 0.82);
-  --hero-from: #0e2230;
-  --hero-tint: rgba(20, 96, 127, 0.25);
-  --tint-1: #111e29;
-  --tint-2: #13293a;
-  --tint-3: #153248;
-  --tint-4: #173b56;
-}
-
-/* 14. Footer CTA (inside the brand column) --------------------- */
-
-/* 15. Contact page: one split card ------------------------------ */
-.contact-card {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-@media (min-width: 900px) {
-  .contact-card {
-    grid-template-columns: 7fr 5fr;
-  }
-}
-.contact-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  background: linear-gradient(160deg, var(--c-navy), var(--c-navy-light));
-}
-.contact-list {
-  display: grid;
-  gap: 0.9rem;
-  margin: 1rem 0 1.5rem;
-  font-size: var(--fs-ui);
-}
-.contact-ico {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.12);
-}
-.contact-ico svg {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-.contact-divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-}
-.contact-steps {
-  counter-reset: step;
-  display: grid;
-  gap: 0.9rem;
-  margin-top: 1rem;
-  font-size: var(--fs-body);
-}
-.contact-steps li {
-  counter-increment: step;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-.contact-steps li::before {
-  content: counter(step);
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--c-navy);
-  font-size: var(--fs-caption);
-  font-weight: 700;
-}
-.contact-panel .social-row {
-  margin-top: 1rem;
-}
-.contact-panel .social-icon {
-  background: rgba(255, 255, 255, 0.14);
-}
-.contact-panel .social-icon:hover {
-  background: #fff;
-  color: var(--c-navy);
-}
-.contact-form {
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-}
-.contact-form > .t-h3 {
-  margin-bottom: 1.25rem;
-}
-.field-row {
-  display: grid;
-  column-gap: 1rem;
-}
-@media (min-width: 640px) {
-  .field-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* 16. Social bar on phones: icons only -------------------------- */
-@media (max-width: 639px) {
-  .social-bar {
-    justify-content: center;
-    text-align: center;
-  }
-  .social-pills {
-    justify-content: center;
-  }
-  .social-pill {
-    padding: 0.55rem;
-  }
-  .social-pill__label,
-  .social-pill__arrow {
-    display: none;
-  }
-}
-
-/* 17. Back to top button ---------------------------------------- */
-.to-top {
-  position: fixed;
-  right: 1.25rem;
-  bottom: max(1.25rem, env(safe-area-inset-bottom));
-  z-index: 40;
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: var(--c-dark);
-  color: #fff;
-  box-shadow: 0 12px 24px -10px rgba(11, 52, 71, 0.6);
-  opacity: 0;
-  visibility: hidden;
-  translate: 0 12px;
-  transition:
-    opacity 0.3s,
-    translate 0.3s,
-    visibility 0.3s,
-    background 0.2s;
-}
-.to-top.is-visible {
-  opacity: 1;
-  visibility: visible;
-  translate: 0 0;
-}
-.to-top:hover {
-  background: var(--c-blue);
-}
-
-/* 18. Case slider: no fade while the loop re-centers ----------- */
-.cs-track.is-jumping .cs-slide {
-  transition: none;
-}
-
-/* 14b. Footer CTA: calm highlighted card in the first column ------ */
-
-/* 19. Case study slider: brand blue, clearly different from the footer */
-.cs {
-  background: linear-gradient(180deg, var(--c-dark), #0d5774);
-}
-.cs .t-eyebrow {
-  color: #cdeefa;
-}
-.cs .t-body {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-/* 14c. Footer CTA: eyebrow + text with a cyan bar, button below -- */
-.footer-cta {
-  margin-top: 2rem;
-}
-.footer-cta__copy {
-  max-width: 22rem;
-  padding-left: 1.1rem;
-  border-left: 3px solid var(--c-cyan);
-}
-.footer-cta__eyebrow {
-  color: var(--c-cyan);
-  font-size: var(--fs-caption);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-.footer-cta__text {
-  margin-top: 0.6rem;
-  color: #fff;
-  font-size: var(--fs-h2);
-  font-weight: 500;
-  line-height: 1.45;
-}
-.footer-cta .btn-cta {
-  margin-top: 1.25rem;
-  margin-left: calc(1.1rem + 3px);
-}
-.btn-cta {
-  background: var(--c-cyan);
-  color: #0b3447;
-  font-weight: 600;
-}
-.btn-cta:hover {
-  background: #fff;
-}
-.btn-cta span {
-  transition: translate 0.2s;
-}
-.btn-cta:hover span {
-  translate: 3px 0;
-}
-
-/* 15b. Contact rows are boxes with a hover state ----------------- */
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 0.9rem;
-  background: rgba(255, 255, 255, 0.05);
-  transition:
-    background 0.2s,
-    border-color 0.2s,
-    translate 0.2s;
-}
-a.contact-item:hover {
-  translate: 0 -2px;
-  border-color: rgba(124, 199, 230, 0.7);
-  background: rgba(255, 255, 255, 0.14);
-}
-a.contact-item:hover .contact-ico {
-  background: var(--c-cyan);
-  color: #0b3447;
-}
-.contact-ico {
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.contact-steps li {
-  padding: 0.35rem 0.5rem;
-  margin-inline: -0.5rem;
-  border-radius: 0.6rem;
-  transition: background 0.2s;
-}
-.contact-steps li:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* 20. Case study pop-up (View details) ---------------------------- */
-html.modal-open {
-  overflow: hidden;
-}
-.case-modal {
-  width: min(72rem, calc(100vw - 1.5rem));
-  max-height: calc(100vh - 1.5rem);
-  max-height: calc(100svh - 1.5rem);
-  margin: auto;
-  padding: 0;
-  overflow: auto;
-  border: 0;
-  border-radius: 1.5rem;
-  background: var(--surface);
-  color: var(--c-ink);
-}
-.case-modal::backdrop {
-  background: rgba(6, 22, 32, 0.7);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-.case-modal[open] {
-  animation: modal-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.case-modal[open]::backdrop {
-  animation: modal-fade 0.3s ease;
-}
-@keyframes modal-in {
-  from {
-    opacity: 0;
-    translate: 0 16px;
-    scale: 0.97;
-  }
-}
-@keyframes modal-fade {
-  from {
-    opacity: 0;
-  }
-}
-.case-modal__inner {
-  position: relative;
-  display: grid;
-  gap: 1.5rem;
-  padding: clamp(1rem, 0.5rem + 2vw, 2rem);
-}
-@media (min-width: 900px) {
-  .case-modal__inner {
-    grid-template-columns: 1.6fr 1fr;
-    gap: 2.5rem;
-  }
-}
-.case-modal__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--c-ink);
-  transition: background 0.2s;
-}
-.case-modal__close:hover {
-  background: var(--c-light);
-}
-.case-modal__stage {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.25rem;
-  background: var(--c-lightblue);
-  touch-action: pan-y;
-}
-.case-modal__track {
-  display: flex;
-  transition: translate 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.case-modal__track > .gal-item {
-  flex: 0 0 100%;
-  border-radius: 0;
-}
-.case-modal__nav {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0b3447;
-  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  translate: 0 -50%;
-  transition:
-    opacity 0.2s,
-    scale 0.2s;
-}
-.case-modal__nav:hover {
-  scale: 1.06;
-}
-.case-modal__nav--prev {
-  left: 0.75rem;
-}
-.case-modal__nav--next {
-  right: 0.75rem;
-}
-.case-modal__stage:hover .case-modal__nav,
-.case-modal__nav:focus-visible {
-  opacity: 1;
-}
-@media (hover: none) {
-  .case-modal__nav {
-    opacity: 1;
-  }
-}
-.case-modal__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.9rem;
-}
-.gal-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-.gal-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  padding: 0;
-  border-radius: 999px;
-  background: var(--line-strong);
-  transition:
-    width 0.3s,
-    background 0.3s;
-}
-.gal-dot.is-current {
-  width: 1.75rem;
-  background: var(--c-dark);
-}
-.case-modal__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 1rem;
-}
-.case-modal__info > * + * {
-  margin-top: 1rem;
-}
-.case-modal__info > .btn {
-  align-self: flex-start;
-  margin-top: 0.5rem;
-}
-.case-facts {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-.case-facts > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--line);
-  font-size: var(--fs-ui);
-}
-.case-facts dt {
-  color: var(--c-muted);
-}
-.case-facts dd {
-  font-weight: 500;
-  text-align: right;
-  overflow-wrap: anywhere;
-}
-.gal-phones {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4%;
-  height: 100%;
-}
-.gal-phones .phn {
-  width: 20%;
-}
-.gal-zoom {
-  position: relative;
-  width: 88%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: 1rem;
-}
-.gal-zoom .mk {
-  position: absolute;
-  top: -6%;
-  left: -4%;
-  width: 190%;
-}
-
-
-/* 20. Header: solid background (no see-through to the page behind) --- */
-.site-header {
-  background: var(--bg);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-/* 21. Language dropdown: only the current language shows until clicked */
-.lang-menu {
-  position: relative;
-}
-.lang-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  height: 2.25rem;
-  padding: 0 0.6rem 0 0.7rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--c-ink);
-  font-size: var(--fs-caption);
-  font-weight: 600;
-  transition: background 0.2s;
-}
-.lang-btn:hover {
-  background: var(--c-light);
-}
-.lang-btn svg:last-child {
-  transition: rotate 0.2s;
-}
-.lang-btn[aria-expanded="true"] svg:last-child {
-  rotate: 180deg;
-}
-.lang-list {
-  visibility: hidden;
-  opacity: 0;
-  translate: 0 -6px;
-  scale: 0.96;
-  transform-origin: top right;
-  transition:
-    opacity 0.2s ease,
-    translate 0.2s ease,
-    scale 0.2s ease,
-    visibility 0s linear 0.2s;
-  position: absolute;
-  right: 0;
-  top: calc(100% + 0.5rem);
-  z-index: 60;
-  min-width: 11.5rem;
-  padding: 0.35rem;
-  border: 1px solid var(--line);
-  border-radius: 0.9rem;
-  background: var(--surface);
-  box-shadow: 0 18px 40px -18px rgba(11, 52, 71, 0.35);
-}
-.lang-menu.is-open .lang-list {
-  visibility: visible;
-  opacity: 1;
-  translate: 0 0;
-  scale: 1;
-  transition-delay: 0s;
-}
-.lang-list button {
-  opacity: 0;
-  translate: 0 -4px;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    opacity 0.25s ease,
-    translate 0.25s ease;
-}
-.lang-menu.is-open .lang-list button {
-  opacity: 1;
-  translate: 0 0;
-}
-.lang-menu.is-open .lang-list button:nth-child(1) { transition-delay: 0.04s, 0.04s, 0.04s, 0.04s; }
-.lang-menu.is-open .lang-list button:nth-child(2) { transition-delay: 0.08s, 0.08s, 0.08s, 0.08s; }
-.lang-menu.is-open .lang-list button:nth-child(3) { transition-delay: 0.12s, 0.12s, 0.12s, 0.12s; }
-.lang-btn:active {
-  scale: 0.96;
-}
-.lang-list button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.55rem 0.75rem;
-  border-radius: 0.6rem;
-  color: var(--c-ink);
-  font-size: var(--fs-ui);
-  text-align: left;
-}
-.lang-list button:hover {
-  background: var(--c-light);
-}
-.lang-list button[aria-pressed="true"] {
-  color: var(--c-accent);
-  font-weight: 600;
-}
-.lang-list button[aria-pressed="true"]::after {
-  content: "\2713";
-}
-
-/* 22. Case studies: category filter ---------------------------------- */
-.cs-filter {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.cs-filter::-webkit-scrollbar {
-  display: none;
-}
-.cs-chip {
-  flex: 0 0 auto;
-  background: transparent;
-  padding: 0.4rem 1rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  color: #fff;
-  font-size: var(--fs-ui);
-  font-weight: 500;
-  transition:
-    background 0.2s,
-    border-color 0.2s,
-    color 0.2s;
-}
-.cs-chip:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-}
-.cs-chip[aria-pressed="true"] {
-  border-color: #fff;
-  background: #fff;
-  color: #0b3447;
-}
-.cs-controls[hidden] {
-  display: none;
-}
-
-/* 23. Page titles: title (h1) big, tagline smaller ------------------- */
-.t-tagline {
-  color: var(--c-ink);
-  font-size: var(--fs-h2);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-.t-h1 + .t-tagline {
-  margin-top: 0.75rem;
-}
-.t-tagline + .t-lead {
-  margin-top: 1rem;
-}
-.on-dark .t-tagline {
-  color: rgba(255, 255, 255, 0.9);
-}
-.cs-head .t-h1 {
-  margin-top: 0;
-}
-
-/* 24. Case studies: details button and arrows share one row ----------- */
-.cs-info {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.25rem;
-}
-.cs-info__actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-/* 25. Motion: category filter and chips ------------------------------ */
-.cs-track,
-.cs-info {
-  transition:
-    opacity 0.25s ease,
-    translate 0.25s ease;
-}
-.cs.is-filtering .cs-track,
-.cs.is-filtering .cs-info {
-  opacity: 0;
-  translate: 0 10px;
-}
-.cs-chip:hover {
-  translate: 0 -1px;
-}
-.cs-chip:active {
-  scale: 0.95;
-}
-.cs-chip[aria-pressed="true"] {
-  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.5);
-}
-@media (prefers-reduced-motion: reduce) {
-  .lang-list,
-  .lang-list button,
-  .cs-track,
-  .cs-info,
-  .cs-chip {
-    transition: none !important;
-  }
-}
-
-/* 26. Page titles: 26px on mobile, 32px on desktop (below section headings) */
-.page-hero .t-h1,
-.cs-head .t-h1 {
-  font-size: 26px;
-}
-@media (min-width: 768px) {
-  .page-hero .t-h1,
-  .cs-head .t-h1 {
-    font-size: 32px;
-  }
-}
-
-/* 27. Case studies on phones and tablets: content sits at the top and the
-   section is only as tall as its content, so tall screens get no big gaps */
-@media (max-width: 899px) {
-  .cs {
-    justify-content: flex-start;
-    min-height: 0;
-    padding-bottom: 2.5rem;
-  }
-}
-
-
-/* 28. Home: cards without a tag keep their spacing */
-.work-media + .t-h3 {
-  margin-top: 1.25rem;
-}
-
-/* 29. Process steps: real bullet points */
-.stack-card__tags li {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.stack-card__tags li::before {
-  content: "";
-  flex: none;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
-  background: currentColor;
-}
-.stack-card__note {
-  display: block;
-  margin-top: 0.75rem;
-  font-size: var(--fs-caption);
-  opacity: 0.75;
-}
-
-/* Anchors from the home page land below the sticky header */
-section[id] {
-  scroll-margin-top: calc(var(--nav-h, 4.5rem) + 1rem);
-}
-
-/* WM DONY MAULANA */
-/* =========================================================
-   Efek Hover Pop-out Mockup Browser Saja (.grid-5)
-   ========================================================= */
-@media (hover: hover) and (min-width: 768px) {
-  /* 1. Mengatur z-index agar elemen yang pop-out selalu di depan */
-  .grid-5 > .rv {
-    position: relative;
-    z-index: 1;
-  }
-  .grid-5 > .rv:hover {
-    z-index: 999; 
-  }
-  
-  .grid-5 .work-card {
-    position: relative;
-  }
-  
-  /* 2. Izinkan mockup keluar dari batas background biru (.work-media) saat disorot */
-  .grid-5 .work-card:hover .work-media {
-    overflow: visible !important;
-  }
-
-  /* 3. Setup transisi animasi KHUSUS untuk kotak mockup (.mk) */
-  .grid-5 .work-media .mk {
-    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-                translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-                box-shadow 0.4s ease;
-  }
-
-  /* 4. Efek Pop-out pada Mockup (.mk) */
-  .grid-5 .work-card:hover .work-media .mk {
-    translate: 0 0; /* Reset posisi translateY bawaan agar efek melompat lebih terasa */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.8); 
-    /* Tambahan outline putih tipis agar mockup terpisah secara tegas dari background */
-  }
-
-  /* =========================================================
-     MENGATUR ARAH ZOOM & SKALA 1.5x (Agar tidak terpotong layar)
-     ========================================================= */
-
-  /* Kartu 1 & 2 (Kiri): Membesar ke arah kanan atas */
-  .grid-5 > .rv:nth-child(1) .work-card:hover .work-media .mk,
-  .grid-5 > .rv:nth-child(2) .work-card:hover .work-media .mk {
-    transform-origin: bottom left;
-    transform: scale(1.5) translateY(-5%) translateX(5%);
-  }
-
-  /* Kartu 3 (Tengah): Membesar pas di tengah atas */
-  .grid-5 > .rv:nth-child(3) .work-card:hover .work-media .mk {
-    transform-origin: bottom center;
-    transform: scale(1.5) translateY(-5%);
-  }
-
-  /* Kartu 4 & 5 (Kanan): Membesar ke arah kiri atas */
-  .grid-5 > .rv:nth-child(4) .work-card:hover .work-media .mk,
-  .grid-5 > .rv:nth-child(5) .work-card:hover .work-media .mk {
-    transform-origin: bottom right;
-    transform: scale(1.5) translateY(-5%) translateX(-5%);
-  }
-}
-
-/* =========================================================
-   Efek Hover Pop-out Mockup Browser Saja (.rail - Case Studies)
-   ========================================================= */
-@media (hover: hover) and (min-width: 768px) {
-  /* 1. Mengatur z-index agar elemen yang pop-out selalu di depan */
-  .rail > .rv {
-    position: relative;
-    z-index: 1;
-  }
-  .rail > .rv:hover {
-    z-index: 999; 
-  }
-  
-  .rail .work-card {
-    position: relative;
-  }
-  
-  /* 2. Izinkan mockup keluar dari batas background warna saat disorot */
-  .rail .work-card:hover .work-media {
-    overflow: visible !important;
-  }
-
-  /* 3. Setup transisi animasi KHUSUS untuk kotak mockup (.mk) */
-  .rail .work-media .mk {
-    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-                translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-                box-shadow 0.4s ease;
-  }
-
-  /* 4. Efek Pop-out pada Mockup (.mk) di Case Studies */
-  .rail .work-card:hover .work-media .mk {
-    translate: 0 0; 
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.8); 
-  }
-
-  /* =========================================================
-     MENGATUR ARAH ZOOM & SKALA 1.2x UNTUK CASE STUDIES
-     ========================================================= */
-
-  /* Kartu 1 (Kiri): Membesar ke arah kanan atas */
-  .rail > .rv:nth-child(1) .work-card:hover .work-media .mk {
-    transform-origin: bottom left;
-    transform: scale(1.2) translateY(-2%) translateX(2%);
-  }
-
-  /* Kartu 2 (Tengah): Membesar pas di tengah atas */
-  .rail > .rv:nth-child(2) .work-card:hover .work-media .mk {
-    transform-origin: bottom center;
-    transform: scale(1.2) translateY(-2%);
-  }
-
-  /* Kartu 3 (Kanan): Membesar ke arah kiri atas */
-  .rail > .rv:nth-child(3) .work-card:hover .work-media .mk {
-    transform-origin: bottom right;
-    transform: scale(1.2) translateY(-2%) translateX(-2%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rail .work-media .mk {
-    transition: none;
-  }
-}
-
-/* =========================================================
-   How We Work: Contextual UI Mockups (Steps 01 - 04)
-   ========================================================= */
-.hw-bar-title {
-  margin-left: auto;
-  font-size: 9px;
-  font-weight: 600;
-  color: #64748b;
-  letter-spacing: 0.03em;
-}
-.hw-body {
-  background: #f8fafc;
-  padding: 4.5% !important;
-  justify-content: center;
-  font-size: 10px;
-  color: #1e293b;
-}
-
-/* Step 01: We listen (Chat & Brief Checklist) */
-.hw-listen {
-  display: grid !important;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4% !important;
-  align-items: stretch;
-}
-.hw-chat {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-}
-.hw-bubble {
-  padding: 6px 8px;
-  border-radius: 8px;
-  font-size: 9.5px;
-  line-height: 1.3;
-}
-.hw-label {
-  display: block;
-  font-size: 8px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-  opacity: 0.75;
-}
-.hw-bubble--client {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  color: #334155;
-  border-bottom-left-radius: 2px;
-}
-.hw-bubble--mkc {
-  background: #1684ad;
-  color: #fff;
-  border-bottom-right-radius: 2px;
-}
-.hw-checklist {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 7px 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.hw-check-title {
-  font-size: 9px;
-  font-weight: 700;
-  color: #0f172a;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 3px;
-}
-.hw-check-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 8.5px;
-  font-weight: 500;
-  color: #475569;
-}
-.hw-check-item span {
-  display: inline-grid;
-  place-items: center;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #e0f2fe;
-  color: #0f6182;
-  font-size: 7px;
-  font-weight: 800;
-}
-.hw-check-badge {
-  margin-top: 2px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #15803d;
-  font-size: 8px;
-  font-weight: 700;
-  text-align: center;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-
-/* Step 02: We design (Color Swatches, Typography & Mobile-First Artboard) */
-.hw-design {
-  display: grid !important;
-  grid-template-columns: 0.75fr 1.25fr;
-  gap: 4.5% !important;
-  align-items: stretch;
-}
-.hw-tokens {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 7px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.hw-swatches {
-  display: flex;
-  gap: 4px;
-}
-.hw-swatches span {
-  flex: 1;
-  height: 16px;
-  border-radius: 4px;
-}
-.hw-type {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  background: #f8fafc;
-  padding: 4px 6px;
-  border-radius: 5px;
-}
-.hw-type strong {
-  font-size: 13px;
-  color: #0f172a;
-}
-.hw-type span {
-  font-size: 8px;
-  color: #64748b;
-}
-.hw-badge-sm {
-  background: #e0f2fe;
-  color: #0f6182;
-  font-size: 8px;
-  font-weight: 700;
-  text-align: center;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-.hw-artboards {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-}
-.hw-art-desktop {
-  flex: 1;
-  height: 100%;
-  background: #fff;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.hw-art-hero {
-  flex: 1;
-  background: linear-gradient(135deg, #1684ad, #5cc8ee);
-  border-radius: 4px;
-}
-.hw-art-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  height: 28%;
-}
-.hw-art-row span {
-  background: #e2e8f0;
-  border-radius: 3px;
-}
-.hw-art-mobile {
-  width: 34%;
-  height: 92%;
-  background: #fff;
-  border: 2px solid #0f172a;
-  border-radius: 8px;
-  padding: 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  box-shadow: -4px 4px 10px rgba(15, 23, 42, 0.12);
-}
-.hw-art-notch {
-  width: 40%;
-  height: 2px;
-  background: #cbd5e1;
-  margin: 0 auto 1px;
-  border-radius: 2px;
-}
-
-/* Step 03: We build (Code Editor & 99 Speed Gauge) */
-.hw-build {
-  display: grid !important;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 4.5% !important;
-  align-items: stretch;
-}
-.hw-code {
-  background: #0f172a;
-  color: #e2e8f0;
-  border-radius: 8px;
-  padding: 8px 9px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 8.5px;
-  line-height: 1.45;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.hw-code-line.indent {
-  padding-left: 8px;
-}
-.hw-code-line.indent-2 {
-  padding-left: 16px;
-}
-.c-tag { color: #38bdf8; }
-.c-attr { color: #a5f3fc; }
-.c-str { color: #fde047; }
-.c-ok { color: #4ade80; font-style: italic; }
-
-.hw-speed {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.hw-gauge {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #f0fdf4;
-  border: 3px solid #22c55e;
-  color: #15803d;
-  display: grid;
-  place-items: center;
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-.hw-speed-label {
-  font-size: 8.5px;
-  font-weight: 700;
-  color: #0f172a;
-}
-.hw-speed-sub {
-  font-size: 7.5px;
-  color: #16a34a;
-  font-weight: 600;
-}
-
-/* Step 04: We launch (Live URL Bar, Verified Banner & Support Status) */
-.hw-url-bar {
-  margin-left: 6px;
-  background: #fff;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  padding: 1px 8px;
-  font-size: 8px;
-  font-weight: 600;
-  color: #334155;
-}
-.hw-live-pill {
-  margin-left: auto;
-  background: #dcfce7;
-  color: #15803d;
-  font-size: 7.5px;
-  font-weight: 800;
-  padding: 1px 6px;
-  border-radius: 99px;
-}
-.hw-launch {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 6px !important;
-}
-.hw-launch-card {
-  background: #fff;
-  border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  padding: 7px 9px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.hw-launch-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #22c55e;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 800;
-  flex: none;
-}
-.hw-launch-info {
-  display: flex;
-  flex-direction: column;
-}
-.hw-launch-info strong {
-  font-size: 9.5px;
-  color: #0f172a;
-}
-.hw-launch-info span {
-  font-size: 8px;
-  color: #64748b;
-}
-.hw-launch-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-.hw-stat-box {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 7px;
-  padding: 5px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.hw-stat-val {
-  font-size: 10px;
-  font-weight: 800;
-  color: #0f6182;
-}
-.hw-stat-lbl {
-  font-size: 7.5px;
-  color: #64748b;
-}
-
-/* =========================================================
-   How We Work: Interactive & Looping Animations (Steps 01 - 04)
-   ========================================================= */
-
-/* Efek Hover Umum pada Mockup di How We Work */
-.stack-card__visual .mk {
-  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
-}
-.stack-card__visual .mk:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 32px 64px -20px rgba(11, 52, 71, 0.45);
-}
-
-/* ---------------------------------------------------------
-   STEP 01: Live Chat & Sequential Checklist Animation
-   --------------------------------------------------------- */
-.hw-bubble--client {
-  animation: hw-chat-client 6s infinite ease-out;
-  transform-origin: bottom left;
-}
-.hw-bubble--mkc {
-  animation: hw-chat-mkc 6s infinite ease-out;
-  transform-origin: bottom right;
-}
-.hw-checklist .hw-check-item:nth-of-type(2) {
-  animation: hw-check-1 6s infinite ease-out;
-}
-.hw-checklist .hw-check-item:nth-of-type(3) {
-  animation: hw-check-2 6s infinite ease-out;
-}
-.hw-checklist .hw-check-item:nth-of-type(4) {
-  animation: hw-check-3 6s infinite ease-out;
-}
-.hw-check-badge {
-  animation: hw-check-badge 6s infinite ease-out;
-}
-
-@keyframes hw-chat-client {
-  0%, 5% { opacity: 0; transform: translateY(8px) scale(0.92); }
-  12%, 88% { opacity: 1; transform: translateY(0) scale(1); }
-  95%, 100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
-}
-@keyframes hw-chat-mkc {
-  0%, 22% { opacity: 0; transform: translateY(8px) scale(0.92); }
-  30%, 88% { opacity: 1; transform: translateY(0) scale(1); }
-  95%, 100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
-}
-@keyframes hw-check-1 {
-  0%, 32% { opacity: 0.25; transform: translateX(-4px); }
-  40%, 88% { opacity: 1; transform: translateX(0); }
-  95%, 100% { opacity: 0.25; }
-}
-@keyframes hw-check-2 {
-  0%, 44% { opacity: 0.25; transform: translateX(-4px); }
-  52%, 88% { opacity: 1; transform: translateX(0); }
-  95%, 100% { opacity: 0.25; }
-}
-@keyframes hw-check-3 {
-  0%, 56% { opacity: 0.25; transform: translateX(-4px); }
-  64%, 88% { opacity: 1; transform: translateX(0); }
-  95%, 100% { opacity: 0.25; }
-}
-@keyframes hw-check-badge {
-  0%, 66% { opacity: 0; transform: scale(0.85); }
-  74%, 88% { opacity: 1; transform: scale(1); }
-  95%, 100% { opacity: 0; transform: scale(0.9); }
-}
-
-/* ---------------------------------------------------------
-   STEP 02: UI Design Swatches & Floating Mobile Artboard
-   --------------------------------------------------------- */
-.hw-swatches span:nth-child(1) { animation: hw-swatch-pop 4.5s infinite 0s ease-in-out; }
-.hw-swatches span:nth-child(2) { animation: hw-swatch-pop 4.5s infinite 1.5s ease-in-out; }
-.hw-swatches span:nth-child(3) { animation: hw-swatch-pop 4.5s infinite 3s ease-in-out; }
-
-.hw-art-hero {
-  background-size: 200% 200%;
-  animation: hw-gradient-shift 4.5s infinite alternate ease-in-out;
-}
-.hw-art-mobile {
-  animation: hw-phone-float 3.5s infinite ease-in-out;
-}
-.hw-badge-sm {
-  animation: hw-badge-pulse 3s infinite ease-in-out;
-}
-
-@keyframes hw-swatch-pop {
-  0%, 100% { transform: scale(1); box-shadow: none; }
-  20% { transform: scale(1.14) translateY(-2px); box-shadow: 0 4px 8px rgba(15, 97, 130, 0.3); }
-  40% { transform: scale(1); box-shadow: none; }
-}
-@keyframes hw-gradient-shift {
-  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-  100% { background-position: 100% 50%; filter: hue-rotate(18deg); }
-}
-@keyframes hw-phone-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-@keyframes hw-badge-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); background: #bae6fd; }
-}
-
-/* ---------------------------------------------------------
-   STEP 03: Live Code Typing & Speed Score Pulse
-   --------------------------------------------------------- */
-.hw-code-line:nth-child(1) { animation: hw-code-type 5.5s infinite 0.2s both; }
-.hw-code-line:nth-child(2) { animation: hw-code-type 5.5s infinite 0.7s both; }
-.hw-code-line:nth-child(3) { animation: hw-code-type 5.5s infinite 1.2s both; }
-.hw-code-line:nth-child(4) { animation: hw-code-type 5.5s infinite 1.7s both; }
-.hw-code-line:nth-child(5) { animation: hw-code-type 5.5s infinite 2.2s both; }
-.hw-code-line:nth-child(6) { animation: hw-code-type 5.5s infinite 2.7s both; }
-
-/* Kursor ketik berkedip di ujung baris komentar hijau */
-.hw-code-line .c-ok::after {
-  content: "|";
-  margin-left: 2px;
-  font-style: normal;
-  font-weight: 700;
-  color: #38bdf8;
-  animation: hw-cursor-blink 0.8s infinite;
-}
-
-.hw-gauge {
-  font-variant-numeric: tabular-nums;
-  animation: hw-score-color 5.5s infinite ease-out !important;
-}
-
-@keyframes hw-code-type {
-  0%, 5% { opacity: 0; transform: translateX(-6px); }
-  15%, 85% { opacity: 1; transform: translateX(0); }
-  95%, 100% { opacity: 0; transform: translateX(4px); }
-}
-@keyframes hw-cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-@keyframes hw-gauge-glow {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.35); }
-  50% { transform: scale(1.07); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-}
-@keyframes hw-score-color {
-  0%, 8% {
-    border-color: #cbd5e1;
-    color: #64748b;
-    background: #f8fafc;
-    transform: scale(0.95);
-    box-shadow: none;
-  }
-  30% {
-    border-color: #eab308;
-    color: #a16207;
-    background: #fefce8;
-  }
-  55%, 88% {
-    border-color: #22c55e;
-    color: #15803d;
-    background: #f0fdf4;
-    transform: scale(1.06);
-    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.15);
-  }
-  95%, 100% {
-    border-color: #cbd5e1;
-    color: #64748b;
-    background: #f8fafc;
-    transform: scale(0.95);
-    box-shadow: none;
-  }
-}
-
-/* ---------------------------------------------------------
-   STEP 04: Live Server Radar & Verified Card Shimmer
-   --------------------------------------------------------- */
-.hw-live-pill {
-  animation: hw-live-blink 2s infinite ease-in-out;
-}
-.hw-launch-icon {
-  animation: hw-gauge-glow 2.5s infinite ease-in-out;
-}
-.hw-launch-card {
-  position: relative;
-  overflow: hidden;
-}
-.hw-launch-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(34, 197, 94, 0.12),
-    transparent
-  );
-  animation: hw-card-shimmer 4s infinite;
-}
-.hw-stat-box:hover {
-  border-color: #1684ad;
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
-}
-
-@keyframes hw-live-blink {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.3); }
-  50% { opacity: 0.65; box-shadow: 0 0 0 4px rgba(21, 128, 61, 0); }
-}
-@keyframes hw-card-shimmer {
-  0% { left: -120%; }
-  45%, 100% { left: 160%; }
-}
-
-/* Matikan animasi otomatis jika pengguna mengaktifkan mode hemat gerakan */
-@media (prefers-reduced-motion: reduce) {
-  .hw-bubble--client,
-  .hw-bubble--mkc,
-  .hw-checklist .hw-check-item,
-  .hw-check-badge,
-  .hw-swatches span,
-  .hw-art-hero,
-  .hw-art-mobile,
-  .hw-badge-sm,
-  .hw-code-line,
-  .hw-gauge,
-  .hw-live-pill,
-  .hw-launch-icon,
-  .hw-launch-card::after {
-    animation: none !important;
-  }
-}
+<!-- WM DONY MAULANA -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Mari Kawan Creative | Websites for brands and institutions</title>
+    <meta
+      name="description"
+      content="Mari Kawan Creative builds company profile, catalog, news and landing page websites, starting from $100."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      document.documentElement.classList.add("js");
+      (function () {
+        try {
+          var t = localStorage.getItem("mkc-theme");
+          if (!t) t = "light";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: "#1684AD",
+              darkBlue: "#0f6182",
+              lightBlue: "#e0f2fe",
+              light: "#f8fafc",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                '"Segoe UI"',
+                "Roboto",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Site header -->
+    <header class="site-header">
+      <div class="container site-header__bar">
+        <a
+          href="index.html"
+          class="brand"
+          aria-label="Mari Kawan Creative, home"
+        >
+          <!-- LOGO: replace the .brand__mark span with <img src="assets/logo.svg" alt="" class="brand__logo"> -->
+          <span class="brand__mark">MKC</span>
+          <span class="brand__name">Mari Kawan Creative</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="index.html" aria-current="page">Home</a
+          ><a href="about.html">About Us</a><a href="services.html">Services</a
+          ><a href="case-studies.html">Case Studies</a
+          ><a href="contact.html">Contact</a>
+        </nav>
+        <div class="site-header__actions">
+          <div class="lang-menu" data-lang-menu>
+            <button
+              type="button"
+              class="lang-btn"
+              data-lang-toggle
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="lang-list"
+              aria-label="Language"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+              <span data-lang-current>EN</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            <div id="lang-list" class="lang-list" role="group" aria-label="Language">
+              <button type="button" data-lang="en" aria-pressed="true">English</button>
+              <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
+              <button type="button" data-lang="es" aria-pressed="false">Español</button>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="theme-btn"
+            data-theme-toggle
+            aria-label="Toggle dark mode"
+          >
+            <span class="i-moon"
+              ><svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"
+                /></svg></span
+            ><span class="i-sun"
+              ><svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                /></svg
+            ></span>
+          </button>
+          <a class="btn btn-primary btn-sm site-header__cta" href="contact.html"
+            >Get a Quote</a
+          >
+          <button
+            id="menu-btn"
+            class="menu-btn"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            >
+              <path d="M3 7h14M3 13h14" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <a href="index.html">Home</a><a href="about.html">About Us</a
+        ><a href="services.html">Services</a
+        ><a href="case-studies.html">Case Studies</a
+        ><a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary mobile-menu__cta"
+          >Get a Quote</a
+        >
+      </div>
+    </header>
+    <main>
+      <!-- Hero slider: edit, add or remove <article class="slide"> blocks. Dots are generated by main.js. -->
+      <section
+        class="slider"
+        data-slider
+        aria-roledescription="carousel"
+        aria-label="Featured"
+      >
+        <div class="slider-track">
+          <!-- Slide 1: Brand promise (Opsi 1B) -->
+          <article
+            class="slide slide-light is-active"
+            aria-roledescription="slide"
+            aria-label="1 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Websites for brands and institutions</p>
+                <h1 class="t-display">One starting price.<br />Shaped around your needs.</h1>
+                <p class="t-lead">
+                  No fixed packages. Tell us what you need and we will tailor the scope and cost. Starting from $100 (about Rp 1.600.000).
+                </p>
+                <ul class="slide-points">
+                  <li>Mobile first layout</li>
+                  <li>Fast, accessible pages</li>
+                  <li>Custom scope &amp; estimate</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="contact.html">Get a project estimate</a
+                  ><a class="link" href="case-studies.html"
+                    >See our work &rsaquo;</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="hero-mock s1-live">
+                  <!-- Desktop Preview -->
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar">
+                      <i></i><i></i><i></i>
+                      <span class="s1-bar-url">🔒 yourbrand.com</span>
+                      <span class="s1-bar-tag">Desktop + Mobile Sync</span>
+                    </div>
+                    <div class="mk-body s1-desk-body">
+                      <!-- Mini Website Header -->
+                      <div class="s1-mini-nav">
+                        <span class="s1-logo-dot"></span>
+                        <div class="s1-nav-links">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <span class="s1-nav-cta"></span>
+                      </div>
+                      <!-- Mini Website Hero -->
+                      <div class="s1-mini-hero">
+                        <div class="s1-hero-text">
+                          <span class="s1-pill">Mobile-First Web</span>
+                          <div class="s1-title-line w-90"></div>
+                          <div class="s1-title-line w-65"></div>
+                          <div class="s1-sub-line w-80"></div>
+                          <div class="s1-btn-mock">$100+ Custom Scope</div>
+                        </div>
+                        <div class="s1-hero-Card">
+                          <div class="s1-scan-line"></div>
+                        </div>
+                      </div>
+                      <!-- Mini Feature Grid -->
+                      <div class="s1-mini-grid">
+                        <div class="s1-grid-item"></div>
+                        <div class="s1-grid-item"></div>
+                        <div class="s1-grid-item"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Floating Mobile Preview (Synced) -->
+                  <div class="float-phone s1-phone-sync">
+                    <div class="phn mkx" style="--a: #0f6182">
+                      <div class="mk-body s1-mob-body">
+                        <div class="s1-mob-notch"></div>
+                        <div class="s1-mob-hero">
+                          <div class="s1-scan-line"></div>
+                        </div>
+                        <div class="s1-title-line w-85"></div>
+                        <div class="s1-sub-line w-60"></div>
+                        <div class="s1-mob-cards">
+                          <span></span><span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Floating Status Chips -->
+                  <span class="float-chip float-chip--a">
+                    <span class="s1-dot-green"></span>99 Performance
+                  </span>
+                  <span class="float-chip float-chip--b">Mobile first ✓</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2: Services -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="2 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">What we build</p>
+                <h2 class="t-display">
+                  Websites designed<br />around your goals.
+                </h2>
+                <p class="t-lead">
+                  Whatever the scope of your project. Pick what you need, or tell us something different. Every site is designed mobile first and built to load fast.
+                </p>
+                <ul class="slide-points">
+                  <li>Company profile and catalog</li>
+                  <li>News and landing pages</li>
+                  <li>Custom work &amp; more</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="services.html"
+                    >Tell us your needs &rsaquo;</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="tile-grid">
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="row" style="flex: 1.3">
+                          <div style="flex: 1.1">
+                            <span class="l h" style="width: 80%"></span
+                            ><span class="l h" style="width: 55%"></span
+                            ><span class="l" style="width: 70%"></span
+                            ><span class="l" style="width: 60%"></span>
+                            <div class="bt" style="margin-top: 10px"></div>
+                          </div>
+                          <div class="ac"></div>
+                        </div>
+                        <div class="grid3">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Company Profile</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="grid3" style="grid-template-rows: 1fr 1fr">
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="bx" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                          <div>
+                            <div class="ac" style="height: 62%"></div>
+                            <span class="l" style="width: 80%"></span
+                            ><span class="l" style="width: 45%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Catalog Website</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div class="ac" style="flex: 1.2"></div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                        <div class="row" style="flex: 0.5; align-items: center">
+                          <div
+                            class="bx"
+                            style="flex: 0 0 18%; height: 100%"
+                          ></div>
+                          <div>
+                            <span class="l" style="width: 85%"></span
+                            ><span class="l" style="width: 55%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">News and Blog</figcaption>
+                  </figure>
+                  <figure class="tile">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i></div>
+                      <div class="mk-body">
+                        <div
+                          style="
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex: 1;
+                            justify-content: center;
+                          "
+                        >
+                          <span class="l h" style="width: 60%"></span
+                          ><span class="l h" style="width: 40%"></span
+                          ><span class="l" style="width: 50%"></span>
+                          <div
+                            class="bt"
+                            style="width: 26%; margin: 8px 0"
+                          ></div>
+                        </div>
+                        <div class="row" style="flex: 0.6">
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                          <div class="bx"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <figcaption class="t-small">Landing Page</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 3: Selected work -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="3 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Case Studies</p>
+                <h2 class="t-display">See our work.</h2>
+                <p class="t-lead">
+                  A look at some of the websites we have designed and built recently.
+                </p>
+                <ul class="slide-points">
+                  <li>Company profiles</li>
+                  <li>Catalog websites</li>
+                  <li>Village profiles</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="case-studies.html"
+                    >View all case studies &rsaquo;</a
+                  >
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="stack">
+                  <!-- Browser Belakang (Natura) -->
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/natura.png" alt="Natura Furniture" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                  <!-- Browser Depan (Tubanan) -->
+                  <div class="mk mkx" style="--a: #15803d">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/tubanan.id.png" alt="Tubanan ID" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 4: Call to action (Opsi 4A) -->
+          <article
+            class="slide slide-light"
+            aria-roledescription="slide"
+            aria-label="4 of 4"
+          >
+            <div class="container slide-inner">
+              <div class="slide-copy">
+                <p class="t-eyebrow">Let's work together</p>
+                <h2 class="t-display">Let's build<br />yours.</h2>
+                <p class="t-lead">
+                  Tell us about your project and get a clear plan and quote. We will reply within one business day at most.
+                </p>
+                <ul class="slide-points">
+                  <li>A free conversation about your needs</li>
+                  <li>One clear estimate before we start</li>
+                  <li>Support as your needs grow</li>
+                </ul>
+                <div class="actions">
+                  <a class="btn btn-primary" href="contact.html">Get a Quote &rarr;</a>
+                </div>
+              </div>
+              <div class="slide-visual">
+                <div class="s4-kickoff">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar">
+                      <i></i><i></i><i></i>
+                      <span class="hw-bar-title">Project Kickoff</span>
+                      <span class="s4-reply-badge">⚡ &le; 1 Business Day</span>
+                    </div>
+                    <div class="mk-body s4-body">
+                      <!-- Pesan Klien -->
+                      <div class="s4-msg s4-msg--client">
+                        <span class="s4-msg-label">You</span>
+                        <p>"Hi MKC, we need a clear, mobile-first website for our brand."</p>
+                      </div>
+
+                      <!-- Balasan & Kartu Estimasi MKC -->
+                      <div class="s4-quote-card">
+                        <div class="s4-quote-head">
+                          <div>
+                            <span class="s4-msg-label">Mari Kawan Creative</span>
+                            <strong>Tailored Plan &amp; Estimate</strong>
+                          </div>
+                          <span class="s4-price-tag">From $100</span>
+                        </div>
+                        <div class="s4-quote-checks">
+                          <div class="s4-check"><span>✓</span> Free consultation</div>
+                          <div class="s4-check"><span>✓</span> Clear scope &amp; timeline</div>
+                          <div class="s4-check"><span>✓</span> Ongoing support ready</div>
+                        </div>
+                        <div class="s4-quote-footer">
+                          <span class="s4-status-dot"></span>
+                          <span>Ready to start when you are</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="slider-ui" role="group" aria-label="Slider controls">
+          <button
+            class="slider-btn"
+            data-slider-prev
+            aria-label="Previous slide"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 4l-6 6 6 6" />
+            </svg>
+          </button>
+          <div class="slider-dots">
+            <button
+              class="dot-btn is-active"
+              data-slider-dot
+              aria-label="Go to slide 1: Brand promise"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 2: Services"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 3: Selected work"
+            >
+              <span class="dot"></span></button
+            ><button
+              class="dot-btn"
+              data-slider-dot
+              aria-label="Go to slide 4: Call to action"
+            >
+              <span class="dot"></span>
+            </button>
+          </div>
+          <button class="slider-btn" data-slider-next aria-label="Next slide">
+            <svg
+              viewBox="0 0 20 20"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 4l6 6-6 6" />
+            </svg>
+          </button>
+          <button
+            class="slider-btn"
+            data-slider-toggle
+            aria-label="Pause slideshow"
+          >
+            <svg
+              class="i-pause"
+              viewBox="0 0 20 20"
+              width="14"
+              height="14"
+              fill="currentColor"
+            >
+              <rect x="5" y="4" width="3.5" height="12" rx="1" />
+              <rect x="11.5" y="4" width="3.5" height="12" rx="1" /></svg
+            ><svg
+              class="i-play"
+              viewBox="0 0 20 20"
+              width="14"
+              height="14"
+              fill="currentColor"
+            >
+              <path d="M6 4l10 6-10 6z" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head rv">
+            <h2 class="t-h2">What we build.</h2>
+            <p class="t-lead">
+              Websites designed around your goals, whatever the scope of your project.
+            </p>
+          </div>
+          
+          <!-- WM DONY MAULANA -->
+          <div class="grid-5 mt-12">
+            <!-- 1. Company Profile (Tubanan.id) -->
+            <div class="rv">
+              <a href="services.html#company-profile" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/tubanan.id.png" alt="Company Profile Tubanan" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <h3 class="t-h3">Company Profile</h3>
+                <p class="t-body">
+                  Tell your brand story with a clear, credible presence that
+                  earns trust on the first visit.
+                </p>
+                <span class="link">Learn more &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 2. Catalog Website (Natura) -->
+            <div class="rv">
+              <a href="services.html#catalog" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/natura.png" alt="Catalog Natura" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <h3 class="t-h3">Catalog Website</h3>
+                <p class="t-body">
+                  Present your products in a tidy catalog that is easy to browse on any device.
+                </p>
+                <span class="link">Learn more &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 3. News and Blog (Weekly Magazine) -->
+            <div class="rv">
+              <a href="services.html#news-blog" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/weekly-magazine.png" alt="News and Blog" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <h3 class="t-h3">News and Blog</h3>
+                <p class="t-body">
+                  Publish articles and updates in a calm, readable layout that
+                  is simple to keep fresh.
+                </p>
+                <span class="link">Learn more &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 4. Landing Page (PakaiWebAja) -->
+            <div class="rv">
+              <a href="services.html#landing-page" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/pakaiwebaja.png" alt="Landing Page" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <h3 class="t-h3">Landing Page</h3>
+                <p class="t-body">
+                  One focused page with a clear message, designed to turn visitors into conversions.
+                </p>
+                <span class="link">Learn more &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 5. Custom & More (Ajeg) -->
+            <div class="rv">
+              <a href="contact.html" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #1684ad">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body">
+                      <div
+                        style="
+                          display: grid;
+                          place-items: center;
+                          flex: 1;
+                          border: 2px dashed var(--a);
+                          border-radius: 10px;
+                          color: var(--a);
+                          font-size: 2.25rem;
+                          font-weight: 300;
+                        "
+                      >
+                        +
+                      </div>
+                      <span class="l" style="width: 60%"></span><span class="l" style="width: 40%"></span>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="t-h3">Custom & More</h3>
+                <p class="t-body">
+                  Something different? We listen first, then design and build
+                  what fits your needs.
+                </p>
+                <span class="link">Tell us your needs &rsaquo;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="price-box rv">
+            <div>
+              <h2 class="t-h2">One starting price. Shaped around your needs.</h2>
+              <p class="t-lead">
+                No fixed packages. Tell us what you need and we will tailor the scope and cost.
+              </p>
+            </div>
+            <div class="price-card">
+              <p class="t-small">Starting from</p>
+              <p class="price-amount">$100</p>
+              <p class="t-body">about Rp 1.600.000</p>
+              <p class="t-small">Final price depends on scope.</p>
+              <a href="contact.html" class="btn btn-primary"
+                >Get a project estimate</a
+              >
+              <p class="t-small">We will reply within one business day at most.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected work -->
+      <section class="section">
+        <div class="container">
+          <div class="section-row">
+            <div class="section-head rv">
+              <h2 class="t-h2">Case Studies.</h2>
+            </div>
+            <a href="case-studies.html" class="link"
+              >View all case studies &rsaquo;</a
+            >
+          </div>
+          
+          <!-- WM DONY MAULANA -->
+          <div class="rail mt-12">
+            <!-- 1. Natura Furniture -->
+            <div class="rv">
+              <a href="case-studies.html#natura-furniture" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #a16207">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/natura.png" alt="Natura Furniture" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Catalog</p>
+                <h3 class="t-h3">Natura Furniture</h3>
+                <p class="t-body">
+                  A furniture catalog built for easy browsing.
+                </p>
+                <span class="link">View case study &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 2. PHI Tropmed -->
+            <div class="rv">
+              <a href="case-studies.html#phi-tropmed" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #0f766e">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/phi-tropmed.png" alt="PHI Tropmed" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Company Profile</p>
+                <h3 class="t-h3">PHI Tropmed</h3>
+                <p class="t-body">A company profile for a research center.</p>
+                <span class="link">View case study &rsaquo;</span>
+              </a>
+            </div>
+            
+            <!-- 3. Tubanan -->
+            <div class="rv">
+              <a href="case-studies.html#tubanan" class="work-card">
+                <div class="work-media">
+                  <div class="mk mkx" style="--a: #15803d">
+                    <div class="mk-bar"><i></i><i></i><i></i></div>
+                    <div class="mk-body" style="padding: 0; overflow: hidden;">
+                      <img src="assets/img/tubanan.id.png" alt="Tubanan ID" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                    </div>
+                  </div>
+                </div>
+                <p class="work-tag">Company Profile</p>
+                <h3 class="t-h3">Tubanan</h3>
+                <p class="t-body">A village profile website.</p>
+                <span class="link">View case study &rsaquo;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How we work: stacked cards that reveal as you scroll -->
+      <section class="section process" id="how-we-work">
+        <div class="container">
+          <div class="section-head rv">
+            <h2 class="t-h2">How we work.</h2>
+            <p class="t-lead">
+              From the first conversation to launch, in four steps.
+            </p>
+          </div>
+          <ol class="stack-cards">
+            <!-- STEP 01: WE LISTEN -->
+            <li class="stack-card" style="--i: 0">
+              <div class="stack-card__inner tint-1">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We listen</h3>
+                  <span class="stack-card__num">01</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    We start by understanding your goals, audience and content.
+                    There are no fixed packages, so the plan is shaped around
+                    you.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Goals &amp; audience</li>
+                    <li>Content review</li>
+                    <li>Scope &amp; budget</li>
+                    <li>Free discussion</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i><span class="hw-bar-title">Project Discovery</span></div>
+                      <div class="mk-body hw-body hw-listen">
+                        <div class="hw-chat">
+                          <div class="hw-bubble hw-bubble--client">
+                            <span class="hw-label">Client</span>
+                            "We need a credible company profile site."
+                          </div>
+                          <div class="hw-bubble hw-bubble--mkc">
+                            <span class="hw-label">MKC Team</span>
+                            "Got it! Here is a tailored scope &amp; estimate."
+                          </div>
+                        </div>
+                        <div class="hw-checklist">
+                          <div class="hw-check-title">Project Brief</div>
+                          <div class="hw-check-item"><span>✓</span> Brand Goals</div>
+                          <div class="hw-check-item"><span>✓</span> Target Audience</div>
+                          <div class="hw-check-item"><span>✓</span> Custom Scope</div>
+                          <div class="hw-check-badge">$100+ Estimate</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- STEP 02: WE DESIGN -->
+            <li class="stack-card" style="--i: 1">
+              <div class="stack-card__inner tint-2">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We design</h3>
+                  <span class="stack-card__num">02</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    A clear, mobile-first layout in your brand colors. We can follow your design preferences, or you can ask for our opinion and suggestions. You see everything before we build.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Layout</li>
+                    <li>Brand colors</li>
+                    <li>Mobile first</li>
+                    <li>Your feedback</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i><span class="hw-bar-title">UI/UX Canvas</span></div>
+                      <div class="mk-body hw-body hw-design">
+                        <div class="hw-tokens">
+                          <div class="hw-swatches">
+                            <span style="background: #0b3447"></span>
+                            <span style="background: #1684ad"></span>
+                            <span style="background: #5cc8ee"></span>
+                          </div>
+                          <div class="hw-type">
+                            <strong>Aa</strong>
+                            <span>Inter</span>
+                          </div>
+                          <div class="hw-badge-sm">Approved ✓</div>
+                        </div>
+                        <div class="hw-artboards">
+                          <div class="hw-art-desktop">
+                            <div class="hw-art-hero"></div>
+                            <div class="hw-art-row">
+                              <span></span><span></span><span></span>
+                            </div>
+                          </div>
+                          <div class="hw-art-mobile">
+                            <div class="hw-art-notch"></div>
+                            <div class="hw-art-hero"></div>
+                            <span class="l" style="width: 75%"></span>
+                            <span class="l" style="width: 50%"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- STEP 03: WE BUILD -->
+            <li class="stack-card" style="--i: 2">
+              <div class="stack-card__inner tint-3">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We build</h3>
+                  <span class="stack-card__num">03</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    Fast, accessible pages that work well on every screen size
+                    and device.
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Responsive pages</li>
+                    <li>Fast loading</li>
+                    <li>Clean structure</li>
+                    <li>Device testing</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar"><i></i><i></i><i></i><span class="hw-bar-title">Clean Build &amp; Speed</span></div>
+                      <div class="mk-body hw-body hw-build">
+                        <div class="hw-code">
+                          <div class="hw-code-line"><span class="c-tag">&lt;header</span> <span class="c-attr">class=</span><span class="c-str">"site"</span><span class="c-tag">&gt;</span></div>
+                          <div class="hw-code-line indent"><span class="c-tag">&lt;nav</span> <span class="c-attr">aria-label=</span><span class="c-str">"Main"</span><span class="c-tag">&gt;</span></div>
+                          <div class="hw-code-line indent"><span class="c-tag">&lt;main</span> <span class="c-attr">class=</span><span class="c-str">"fast-grid"</span><span class="c-tag">&gt;</span></div>
+                          <div class="hw-code-line indent-2"><span class="c-ok">// Responsive &amp; SEO ready</span></div>
+                          <div class="hw-code-line indent"><span class="c-tag">&lt;/main&gt;</span></div>
+                          <div class="hw-code-line"><span class="c-tag">&lt;/header&gt;</span></div>
+                        </div>
+                        <div class="hw-speed">
+                          <div class="hw-gauge">99</div>
+                          <div class="hw-speed-label">Performance</div>
+                          <div class="hw-speed-sub">All devices ✓</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- STEP 04: WE LAUNCH -->
+            <li class="stack-card" style="--i: 3">
+              <div class="stack-card__inner tint-4">
+                <div class="stack-card__head">
+                  <h3 class="t-h2">We launch</h3>
+                  <span class="stack-card__num">04</span>
+                </div>
+                <div class="stack-card__body">
+                  <p class="t-body">
+                    We publish, test and hand over, then stay available as your needs grow.<sup>*</sup><small class="stack-card__note">* Terms and conditions apply.</small>
+                  </p>
+                  <ul class="stack-card__tags">
+                    <li>Launch &amp; testing</li>
+                    <li>Handover</li>
+                    <li>Ongoing support</li>
+                    <li>Custom requests</li>
+                  </ul>
+                  <div class="stack-card__visual">
+                    <div class="mk mkx" style="--a: #1684ad">
+                      <div class="mk-bar">
+                        <i></i><i></i><i></i>
+                        <div class="hw-url-bar">🔒 yourbrand.com</div>
+                        <span class="hw-live-pill">● LIVE</span>
+                      </div>
+                      <div class="mk-body hw-body hw-launch">
+                        <div class="hw-launch-card">
+                          <div class="hw-launch-icon">✓</div>
+                          <div class="hw-launch-info">
+                            <strong>Website Published &amp; Verified</strong>
+                            <span>SSL Active &bull; Handover Complete</span>
+                          </div>
+                        </div>
+                        <div class="hw-launch-stats">
+                          <div class="hw-stat-box">
+                            <span class="hw-stat-val">24/7</span>
+                            <span class="hw-stat-lbl">Online &amp; Fast</span>
+                          </div>
+                          <div class="hw-stat-box">
+                            <span class="hw-stat-val">Ready</span>
+                            <span class="hw-stat-lbl">Ongoing Support</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section section-alt">
+        <div class="container">
+          <div class="faq">
+            <div class="faq__head rv">
+              <p class="t-eyebrow">FAQ</p>
+              <h2 class="t-h2">We answer your questions.</h2>
+              <p class="t-lead">
+                Cannot find yours? Message us and we reply within one business
+                day.
+              </p>
+            </div>
+            <div class="faq__list rv">
+              <details class="faq__item" name="faq">
+                <summary>
+                  How much does a website cost?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Our websites start from $100 (about Rp 1.600.000). We don't
+                  use fixed packages or price tiers. The final price depends on
+                  your scope, and we shape it around your needs.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Is there a monthly fee?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Your estimate lists everything that is included. If you need
+                  ongoing support, hosting or updates, we can add them based on
+                  what you need.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Which website types do you build?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Company profile, catalog, news and blog, and landing page
+                  websites. If you need something different, tell us and we will
+                  find the right fit.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Do I own the design and content?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Ownership terms are written in your estimate before we start,
+                  so everything is clear from day one.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  How long until my website is ready?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  It depends on the scope and how quickly your content is ready.
+                  You get a clear timeline with your estimate.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Are the domain and hosting included?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  We can include them or work with the ones you already have. We
+                  confirm this in your estimate.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  Will my website work on phones?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Yes. Every website is designed mobile first and tested on
+                  desktop, tablet and phone.
+                </p>
+              </details>
+              <details class="faq__item" name="faq">
+                <summary>
+                  How do I get started?<span
+                    class="faq__icon"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <p class="t-body">
+                  Send us a message with your goals. We reply within one
+                  business day with questions and an estimate.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social media -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="social-bar rv">
+            <div>
+              <h2 class="t-h3">Follow @marikawanid</h2>
+              <p class="t-small">
+                Follow us for the latest updates from Mari Kawan Creative.
+              </p>
+            </div>
+            <div class="social-pills">
+              <a
+                href="https://www.instagram.com/marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    /></svg></span
+                ><span class="social-pill__label">Instagram</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              ><a
+                href="https://www.youtube.com/@marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.2 22 12 22 12s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"
+                    /></svg></span
+                ><span class="social-pill__label">YouTube</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              ><a
+                href="https://www.tiktok.com/@marikawanid"
+                class="social-pill"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok"
+                ><span class="social-pill__icon"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"
+                    /></svg></span
+                ><span class="social-pill__label">TikTok</span
+                ><span class="social-pill__arrow" aria-hidden="true"
+                  >&rarr;</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="brand brand--footer">
+              <span class="brand__mark">MKC</span>
+              <span class="brand__name">Mari Kawan Creative</span>
+            </a>
+            <p class="footer-text footer-about">
+              Websites for brands and institutions.
+            </p>
+
+            <!-- Highlighted call to action -->
+            <div class="footer-cta">
+              <div class="footer-cta__copy">
+                <p class="footer-cta__eyebrow">Let's build yours.</p>
+                <p class="footer-cta__text">
+                  Tell us about your project and get a clear plan and quote.
+                </p>
+              </div>
+              <a href="contact.html" class="btn btn-cta"
+                >Get a Quote <span aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+          <div>
+            <h2 class="footer-title">Contact Info</h2>
+            <address class="footer-text">
+              123 Creative Street, Jakarta<br />Indonesia - 12345
+            </address>
+            <p class="footer-text">hello[at]marikawan.com</p>
+            <p class="footer-tel">Tel: +62 (800) 555 5555</p>
+            <p class="footer-hours">Monday to Friday | 9:00 AM - 6:00 PM</p>
+          </div>
+          <div>
+            <h2 class="footer-title">Site Links</h2>
+            <ul class="footer-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="case-studies.html">Case Studies</a></li>
+              <!-- TODO: link to a News &amp; Insights page when it exists -->
+              <li><a href="#">News &amp; Insights</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 &bull; Mari Kawan Creative is a Web Agency. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <button type="button" class="to-top" data-to-top aria-label="Back to top">
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+    <script src="assets/i18n.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+      (function () {
+        const gauge = document.querySelector(".hw-gauge");
+        if (!gauge) return;
+        const cycle = 5500;
+        const countDuration = 2800;
+        let start = performance.now();
+
+        function update(now) {
+          const elapsed = (now - start) % cycle;
+          if (elapsed < 400) {
+            gauge.textContent = "0";
+          } else if (elapsed < 400 + countDuration) {
+            const progress = (elapsed - 400) / countDuration;
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            gauge.textContent = Math.min(99, Math.floor(easeOut * 100));
+          } else if (elapsed < 5100) {
+            gauge.textContent = "99";
+          } else {
+            gauge.textContent = "0";
+          }
+          requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      })();
+    </script>
+  </body>
+</html>
